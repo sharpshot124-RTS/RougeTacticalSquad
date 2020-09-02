@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381da3bc11c2caa44b9b1de0033094b6, type: 3}
+  m_Name: BitFSMSettings_01
+  m_EditorClassIdentifier: 
+  currentAI: {fileID: 11400000, guid: da915972fa6e9da42a16cc0797fc199e, type: 2}
+  styleEntryColor: {r: 0.6, g: 0.7, b: 0.3, a: 1}
+  styleNormalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  styleSelectedColor: {r: 0.43, g: 0.72, b: 0.72, a: 1}
+  styleActiveColor: {r: 1, g: 1, b: 1, a: 1}
+  styleConnectorColor: {r: 0.65, g: 0.65, b: 0.65, a: 0.75}
+  styleConnectorSuccessColor: {r: 0.6, g: 0.7, b: 0.1, a: 0.75}
+  styleConnectorFailureColor: {r: 0.7, g: 0.3, b: 0.3, a: 0.75}
+  styleEditorNormalColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  styleLineColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  moveDownIcon: {fileID: 2800000, guid: 706591a1043cc8f4fb9ff84326149931, type: 3}
+  moveUpIcon: {fileID: 2800000, guid: 3bd7fc618cffc5446804aeb957bed862, type: 3}
+  deleteIcon: {fileID: 2800000, guid: 5b41754112677ab4bb899a7e9f7655b5, type: 3}
