@@ -68,6 +68,11 @@ public class EmitterProjectile : ScriptableObject, IProjectile
         }
     }
 
+    public bool IsFiring
+    {
+        get { return Firing == null; }
+    }
+
     public Coroutine StartCoroutine(IEnumerator coroutine)
     {
         return Transform.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);

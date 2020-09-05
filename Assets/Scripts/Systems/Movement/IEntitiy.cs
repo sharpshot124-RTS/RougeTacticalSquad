@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public interface IEntitiy
+public interface IEntity
 {
     Transform Transform { get; }
 }

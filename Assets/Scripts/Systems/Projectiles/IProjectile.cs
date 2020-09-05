@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
-public interface IProjectile : IEntitiy
+public interface IProjectile : IEntity
 {
     Vector3 StartPosition { get; set; }
 
     Vector3 EndPosition { get; set; }
 
     Coroutine Firing { get; set; }
+
+    bool IsFiring { get; }
 
     RaycastUnityEvent OnHit { get; }
 

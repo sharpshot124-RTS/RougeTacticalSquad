@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IArea : IEntitiy
+public interface IArea : IEntity
 {
     Vector3 Center { get; }
 

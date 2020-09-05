@@ -41,7 +41,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
 
     [SerializeField]
     private FloatUnityEvent _onHealthChangeNormalized;
-    public UnityEvent<float> OnHelthChangeNormalized
+    public UnityEvent<float> OnHealthChangeNormalized
     {
         get { return _onHealthChangeNormalized; }
     }
@@ -121,7 +121,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         if(CurrentHealth.Equals(lastHealth))
             return;
 
-        OnHelthChangeNormalized.Invoke(CurrentHealth / MaxHealth);
+        OnHealthChangeNormalized.Invoke(CurrentHealth / MaxHealth);
         OnHealthChange.Invoke(CurrentHealth);
 
         if (CurrentHealth <= 0)

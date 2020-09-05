@@ -59,6 +59,11 @@ public class BallisticProjectile : ScriptableObject, IProjectile
         set { _targets = value; }
     }
 
+    public bool IsFiring
+    {
+        get { return Firing == null; }
+    }
+
     public Coroutine StartCoroutine(IEnumerator coroutine)
     {
         return Transform.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);

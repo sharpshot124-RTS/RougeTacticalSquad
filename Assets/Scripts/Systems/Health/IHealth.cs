@@ -13,6 +13,6 @@ public interface IHealth
 
     UnityEvent<float> OnHealthChange { get; }
 
-    UnityEvent<float> OnHelthChangeNormalized { get; }
+    UnityEvent<float> OnHealthChangeNormalized { get; }
 }
 

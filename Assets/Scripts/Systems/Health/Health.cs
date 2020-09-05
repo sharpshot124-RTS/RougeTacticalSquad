@@ -40,7 +40,7 @@ public class Health : MonoBehaviour, IHealth
 
     [SerializeField]
     private FloatUnityEvent _onHealthChangeNormalized;
-    public UnityEvent<float> OnHelthChangeNormalized
+    public UnityEvent<float> OnHealthChangeNormalized
     {
         get { return _onHealthChangeNormalized; }
     }
