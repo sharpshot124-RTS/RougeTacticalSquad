@@ -9,6 +9,8 @@ public interface ILevel
     EnemyType Enemy { get; set; }
 
     ObjectiveType Objective { get; set; }
+
+    int Degree { get; set; }
 }
 
 public enum BiomeType
