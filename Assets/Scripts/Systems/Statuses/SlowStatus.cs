@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Custom/Status/Slowed")]
-public class SlowedStatusFactory : StatusFactory<SlowedStatusData, SlowedStatus> { }
+
 
 [Serializable]
 public class SlowedStatusData
@@ -23,8 +22,8 @@ public class SlowedStatus : IStatus<SlowedStatusData>
         set { _data = value; }
     }
 
-    private IUnit _target;
-    public IUnit Target
+    private RaycastHit _target;
+    public RaycastHit Target
     {
         get { return _target; }
 
@@ -33,15 +32,16 @@ public class SlowedStatus : IStatus<SlowedStatusData>
 
     public void Apply()
     {
-        Target.StartCoroutine(Slow(Target));
+        Target.transform.GetComponent<IUnit>().StartCoroutine(Slow(Target));
     }
 
-    public IEnumerator Slow(IUnit target)
+    public IEnumerator Slow(RaycastHit target)
     {
-        target.Speed *= Data.slowFactor;
+        var unit = target.transform.GetComponent<IUnit>();
+        unit.Speed *= Data.slowFactor;
 
         yield return new WaitForSeconds(Data.duration);
 
-        target.Speed /= Data.slowFactor;
+        unit.Speed /= Data.slowFactor;
     }
 }

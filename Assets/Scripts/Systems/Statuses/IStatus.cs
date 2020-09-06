@@ -10,5 +10,5 @@ public interface IStatus
 public interface IStatus<T> : IStatus
 {
     T Data { get; set; }
-    IUnit Target { get; set; }
+    RaycastHit Target { get; set; }
 }

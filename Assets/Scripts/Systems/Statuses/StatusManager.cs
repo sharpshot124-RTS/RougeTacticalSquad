@@ -8,8 +8,19 @@ public class StatusManager : MonoBehaviour
     private StatusFactory[] statuses;
 
 
-    public void ApplyStatuses(IUnit target)
+    // public void ApplyStatuses(IUnit target)
+    // {
+    //     foreach (var status in statuses)
+    //     {
+    //         var applied = status.GetStatus(target);
+    //         applied.Apply();
+    //     }
+    // }
+
+    public void ApplyStatuses(RaycastHit target)
     {
+        // var unit = hit.transform.GetComponent<IUnit>();
+
         foreach (var status in statuses)
         {
             var applied = status.GetStatus(target);
@@ -17,19 +28,9 @@ public class StatusManager : MonoBehaviour
         }
     }
 
-    public void ApplyStatuses(RaycastHit hit)
+    public void ApplyStatuses(RaycastHit[] targets)
     {
-        var unit = hit.transform.GetComponent<IUnit>();
-
-        if (unit != null)
-        {
-            ApplyStatuses(unit);
-        }
-    }
-
-    public void ApplyStatuses(RaycastHit[] hits)
-    {
-        foreach (var hit in hits)
+        foreach (var hit in targets)
         {
             ApplyStatuses(hit);
         }
