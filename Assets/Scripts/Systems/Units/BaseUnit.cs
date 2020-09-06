@@ -126,13 +126,9 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         if (CurrentValue.Equals(lastHealth))
             return;
 
-<<<<<<< HEAD
-        OnHealthChangeNormalized.Invoke(CurrentHealth / MaxHealth);
-        OnHealthChange.Invoke(CurrentHealth);
-=======
-        OnHelthChangeNormalized.Invoke(CurrentValue / MaxValue);
+        OnHealthChangeNormalized.Invoke(CurrentValue / MaxValue);
         OnHealthChange.Invoke(CurrentValue);
->>>>>>> 59b585b306bffd3db9836752730daecc12c2e5af
+
 
         if (CurrentValue <= 0)
         {
