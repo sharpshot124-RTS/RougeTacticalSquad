@@ -1,13 +1,8 @@
 ﻿using System;
 using UnityEngine.Events;
 
-public interface IHealth
+public interface IHealth : ICurrency
 {
-    float CurrentHealth { get; set; }
-
-    float MaxHealth { get; set; }
-
-    void ChangeHealth(float delta);
 
     UnityEvent OnDeath { get; }
 

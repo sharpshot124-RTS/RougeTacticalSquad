@@ -18,7 +18,7 @@ public class AreaDamage : MonoBehaviour, IDamager
 
         if (target != null)
         {
-            target.ChangeHealth(-_damage);
+            target.ChangeValue(-_damage);
         }
     }
 

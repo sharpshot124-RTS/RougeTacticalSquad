@@ -9,8 +9,10 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     private NavMeshAgent _nav;
     public NavMeshAgent Nav
     {
-        get { 
-            if(_nav == null){
+        get
+        {
+            if (_nav == null)
+            {
                 _nav = GetComponent<NavMeshAgent>();
             }
             return _nav;
@@ -18,7 +20,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     }
 
     [SerializeField] private float _currentHealth;
-    public float CurrentHealth
+    public float CurrentValue
     {
         get { return _currentHealth; }
 
@@ -26,7 +28,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     }
 
     [SerializeField] private float _MaxHealth;
-    public float MaxHealth
+    public float MaxValue
     {
         get { return _MaxHealth; }
 
@@ -108,23 +110,31 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
 
     public bool Stopped
     {
-        get { return !Nav.pathPending &&
-            (Nav.isStopped || Nav.isPathStale || Vector3.Distance(Nav.transform.position, Nav.pathEndPosition) <= Nav.stoppingDistance); }
+        get
+        {
+            return !Nav.pathPending &&
+          (Nav.isStopped || Nav.isPathStale || Vector3.Distance(Nav.transform.position, Nav.pathEndPosition) <= Nav.stoppingDistance);
+        }
     }
 
-    public void ChangeHealth(float delta)
+    public void ChangeValue(float delta)
     {
-        float lastHealth = CurrentHealth;
-        CurrentHealth = Mathf.Clamp(CurrentHealth + delta, 0, MaxHealth);
+        float lastHealth = CurrentValue;
+        CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue);
 
         //If health did not change, dont call events
-        if(CurrentHealth.Equals(lastHealth))
+        if (CurrentValue.Equals(lastHealth))
             return;
 
+<<<<<<< HEAD
         OnHealthChangeNormalized.Invoke(CurrentHealth / MaxHealth);
         OnHealthChange.Invoke(CurrentHealth);
+=======
+        OnHelthChangeNormalized.Invoke(CurrentValue / MaxValue);
+        OnHealthChange.Invoke(CurrentValue);
+>>>>>>> 59b585b306bffd3db9836752730daecc12c2e5af
 
-        if (CurrentHealth <= 0)
+        if (CurrentValue <= 0)
         {
             OnDeath.Invoke();
         }
@@ -139,7 +149,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     {
         var area = target as IArea;
 
-        if(area != null)
+        if (area != null)
             MoveTo(area.GetPoint());
     }
 
@@ -160,10 +170,10 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
 
     public void Select(bool state)
     {
-        if(Selected == state)
+        if (Selected == state)
             return;
 
-        if(!Selectable)
+        if (!Selectable)
             return;
 
         Selected = state;
@@ -177,7 +187,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         {
             Debug.Log("Deselected");
             OnDeselect.Invoke();
-        }   
+        }
     }
 
     public void ToggleSelect()
@@ -188,7 +198,7 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     public void MoveTo(Vector3 location)
     {
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(location, out hit, 100, 1))
+        if (NavMesh.SamplePosition(location, out hit, 100, 1))
             Nav.destination = hit.position;
     }
 

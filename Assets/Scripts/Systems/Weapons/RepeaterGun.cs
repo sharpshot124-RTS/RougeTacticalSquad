@@ -31,6 +31,14 @@ public class RepeaterGun : MonoBehaviour, IGun
         get { return _range; }
     }
 
+    [SerializeField] private Object _ammoCount;
+
+    public ICurrency Ammo
+    {
+        get { return _ammoCount as ICurrency; }
+
+        set { _ammoCount = value as Object; }
+    }
     [SerializeField] float _damage = 10;
     public float Damage
     {
@@ -84,6 +92,7 @@ public class RepeaterGun : MonoBehaviour, IGun
             onFire.Invoke(hit);
 
             lastFire = Time.time;
+            Ammo.CurrentValue--;
         }
     }
 
@@ -113,6 +122,11 @@ public class RepeaterGun : MonoBehaviour, IGun
 
     bool CanFire()
     {
+        if (Ammo.CurrentValue <= 0)
+        {
+            return false;
+        }
+
         float nextFireTime = lastFire + (1 / FireRate);
         return Time.time >= nextFireTime;
     }
@@ -126,7 +140,7 @@ public class RepeaterGun : MonoBehaviour, IGun
 
     public void StopFiring()
     {
-        if(constantFire != null)
+        if (constantFire != null)
             StopCoroutine(constantFire);
 
         constantFire = null;
@@ -145,7 +159,7 @@ public class RepeaterGun : MonoBehaviour, IGun
     {
         if (target != null)
         {
-            target.ChangeHealth(-_damage);
+            target.ChangeValue(-_damage);
         }
     }
 

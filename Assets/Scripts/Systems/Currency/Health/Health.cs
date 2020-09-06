@@ -8,7 +8,7 @@ public class Health : MonoBehaviour, IHealth
 {
     [SerializeField]
     private float _currentHealth;
-    public float CurrentHealth
+    public float CurrentValue
     {
         get { return _currentHealth; }
 
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour, IHealth
 
     [SerializeField]
     private float _MaxHealth;
-    public float MaxHealth
+    public float MaxValue
     {
         get { return _MaxHealth; }
 
@@ -45,23 +45,23 @@ public class Health : MonoBehaviour, IHealth
         get { return _onHealthChangeNormalized; }
     }
 
-    public void ChangeHealth(float delta)
+    public void ChangeValue(float delta)
     {
-        float lastHealth = CurrentHealth;
-        CurrentHealth = Mathf.Clamp(CurrentHealth + delta, 0, MaxHealth);
+        float lastHealth = CurrentValue;
+        CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue);
 
         //If health did not change, dont call events
-        if (CurrentHealth.Equals(lastHealth))
+        if (CurrentValue.Equals(lastHealth))
             return;
 
-        if (CurrentHealth <= 0)
+        if (CurrentValue <= 0)
         {
             OnDeath.Invoke();
         }
         else
         {
-            OnHealthChange.Invoke(CurrentHealth / MaxHealth);
-            OnHealthChange.Invoke(CurrentHealth);
+            OnHealthChange.Invoke(CurrentValue / MaxValue);
+            OnHealthChange.Invoke(CurrentValue);
         }
     }
 }

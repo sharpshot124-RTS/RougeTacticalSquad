@@ -8,9 +8,10 @@ public class UnitHealthBar : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Object health;
 
-    public void Onhit(){
+    public void Onhit()
+    {
         IHealth Unit = (IHealth)health;
-        healthBar.value = Unit.CurrentHealth/Unit.MaxHealth; 
+        healthBar.value = Unit.CurrentValue / Unit.MaxValue;
     }
 
 }
