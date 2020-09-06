@@ -3,10 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Custom/Status/KnockedBack")]
-
-public class KockBackStatusFactory : StatusFactory<KockBackStatusData, KnockBackStatus> { }
-
 [Serializable]
 public class KockBackStatusData
 {
@@ -24,8 +20,8 @@ public class KnockBackStatus : IStatus<KockBackStatusData>
         set { _data = value; }
     }
 
-    private IUnit _target;
-    public IUnit Target
+    private RaycastHit _target;
+    public RaycastHit Target
     {
         get { return _target; }
 
@@ -34,14 +30,23 @@ public class KnockBackStatus : IStatus<KockBackStatusData>
 
     public void Apply()
     {
-        Target.StartCoroutine(KnockBack(Target));
+        Target.transform.GetComponent<IUnit>().StartCoroutine(KnockBack(Target));
     }
 
-    public IEnumerator KnockBack(IUnit target)
+    public IEnumerator KnockBack(RaycastHit target)
     {
-        var start = target.Transform.position;
-        var destination = start;
-        yield return null;
+        var unit = target.transform.GetComponent<IUnit>();
+        var startPoint = unit.Transform.position;
+        var destination = startPoint - target.point;
+        var distance = Data.blastRadius - destination.magnitude;
+        destination = startPoint + destination.normalized * distance;
+
+        float startTime = Time.time;
+        while (Time.time - startTime < Data.blastSpeed)
+        {
+            unit.Transform.position = Vector3.Lerp(startPoint, destination, (Time.time - startTime) / Data.blastSpeed);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
 }

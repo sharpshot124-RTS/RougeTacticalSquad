@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Custom/Status/DOT")]
-public class DOTStatusFactory : StatusFactory<DOTStatusData, DOTStatus> { }
-
 [Serializable]
 public class DOTStatusData
 {
@@ -25,8 +22,8 @@ public class DOTStatus : IStatus<DOTStatusData>
         set { _data = value; }
     }
 
-    private IUnit _target;
-    public IUnit Target
+    private RaycastHit _target;
+    public RaycastHit Target
     {
         get { return _target; }
 
@@ -35,15 +32,16 @@ public class DOTStatus : IStatus<DOTStatusData>
 
     public void Apply()
     {
-        Target.StartCoroutine(DOT(Target));
+        Target.transform.GetComponent<IUnit>().StartCoroutine(DOT(Target));
     }
 
-    public IEnumerator DOT(IUnit target)
+    public IEnumerator DOT(RaycastHit target)
     {
+        var unit = target.transform.GetComponent<IUnit>();
         var durationLeft = Data.duration;
         while (durationLeft > 0)
         {
-            target.ChangeValue(-Data.dmgPerTick);
+            unit.ChangeValue(-Data.dmgPerTick);
             yield return new WaitForSeconds(Data.tickRate);
             durationLeft -= Data.tickRate;
         }

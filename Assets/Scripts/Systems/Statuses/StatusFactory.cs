@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class StatusFactory : ScriptableObject
 {
-    public abstract IStatus GetStatus(IUnit target);
+    public abstract IStatus GetStatus(RaycastHit target);
 }
 
 public class StatusFactory<DataT, StatusT> : StatusFactory
@@ -13,7 +13,7 @@ public class StatusFactory<DataT, StatusT> : StatusFactory
 {
     public DataT data;
 
-    public override IStatus GetStatus(IUnit target)
+    public override IStatus GetStatus(RaycastHit target)
     {
         return new StatusT { Data = this.data, Target = target };
     }
