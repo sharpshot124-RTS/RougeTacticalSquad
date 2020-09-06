@@ -64,7 +64,7 @@ public class ContinousGun : MonoBehaviour, IGun
 
     public void ApplyDamage(IHealth target)
     {
-        target.ChangeHealth(-Damage);
+        target.ChangeValue(-Damage);
     }
 
     public void ApplyDamage(RaycastHit hit)

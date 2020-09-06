@@ -126,7 +126,7 @@ public class RepeaterGun : MonoBehaviour, IGun
 
     public void StopFiring()
     {
-        if(constantFire != null)
+        if (constantFire != null)
             StopCoroutine(constantFire);
 
         constantFire = null;
@@ -145,7 +145,7 @@ public class RepeaterGun : MonoBehaviour, IGun
     {
         if (target != null)
         {
-            target.ChangeHealth(-_damage);
+            target.ChangeValue(-_damage);
         }
     }
 
