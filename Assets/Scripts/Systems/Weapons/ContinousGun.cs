@@ -14,9 +14,21 @@ public class ContinousGun : MonoBehaviour, IGun
     [SerializeField] private float firingLength;
     [SerializeField] float endFireTime;
 
+
     private Coroutine firing;
     private Dictionary<IHealth, float> lastDamageTimes = new Dictionary<IHealth, float>();
     private Vector3 fireTarget;
+
+
+    [SerializeField] private Object _ammoCount;
+
+    public ICurrency Ammo
+    {
+        get { return _ammoCount as ICurrency; }
+
+        set { _ammoCount = value as Object; }
+    }
+
 
     [SerializeField] private float _damage;
 
@@ -80,6 +92,11 @@ public class ContinousGun : MonoBehaviour, IGun
 
     public void Fire(Vector3 target)
     {
+        if (Ammo.CurrentValue <= 0)
+        {
+            return;
+        }
+
         endFireTime = Time.time + firingLength;
         Projectile.StartPosition = muzzle.position;
 
@@ -94,6 +111,8 @@ public class ContinousGun : MonoBehaviour, IGun
         {
             firing = StartCoroutine(Firing(target));
         }
+
+
     }
 
     public void Fire(RaycastHit hit)
@@ -114,5 +133,6 @@ public class ContinousGun : MonoBehaviour, IGun
         firing = null;
         onFireEnd.Invoke();
         Projectile.Reset();
+        Ammo.CurrentValue--;
     }
 }
