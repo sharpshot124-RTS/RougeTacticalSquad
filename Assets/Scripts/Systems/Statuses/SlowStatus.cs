@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Custom/Status/Slowed")]
-public class SlowedStatusFactory : StatusFactory<SlowedStatusData, SlowedStatus> { }
+
 
 [Serializable]
 public class SlowedStatusData

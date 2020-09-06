@@ -30,7 +30,7 @@ public class DOTStatus : IStatus<DOTStatusData>
     {
         get { return _target; }
 
-        set { _target = ValueTuple; }
+        set { _target = Target; }
     }
 
     public void Apply()
