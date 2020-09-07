@@ -32,6 +32,10 @@ public class RadiusSeek : MonoBehaviour, ISeek
         get { return Transform.position; }
     }
 
+    void UpdateTargets()
+    {
+        Seek(transform.position, Vector3.zero, (r)=> { });
+    }
     public IEnumerable<YieldInstruction> Seek(Vector3 start, Vector3 target, Action<RaycastHit> onFound)
     {
         targets.Clear();
@@ -72,7 +76,17 @@ public class RadiusSeek : MonoBehaviour, ISeek
 
     public RaycastHit GetTarget
     {
-        get { return targets.Last(); }
+        get 
+        {
+            try
+            {
+                return targets.Last();
+            }
+            catch
+            {
+                return new RaycastHit();
+            }
+        }
     }
 
     public RaycastHit[] GetTargets

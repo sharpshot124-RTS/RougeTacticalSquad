@@ -12,7 +12,7 @@ public abstract class GenericDecision<T> : Decision where T : AIStateController
         {
             return Decide(controller as T);
         }
-        catch
+        catch (Exception e)
         {
             Debug.LogWarning("Controller Type Mismatch: " + controller.GetType());
             return false;
