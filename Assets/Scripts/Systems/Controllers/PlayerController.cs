@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour, IController
 {
     [SerializeField] private InputEventBinding[] actions;
 
-    public YieldType yieldType;
-
     void Update()
     {
         Listen();

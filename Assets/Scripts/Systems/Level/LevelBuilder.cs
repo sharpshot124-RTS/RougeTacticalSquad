@@ -16,7 +16,7 @@ public class LevelBuilder : MonoBehaviour
     public Timer survivalTimer;
     public AnimationCurve survivalTimeCurve;
 
-    public GameObject destroyWave;
+    public GameObject waveTemplate;
 
     public GameObject valley, hills, river;
 
@@ -65,7 +65,7 @@ public class LevelBuilder : MonoBehaviour
                 ObjectiveSet prevWave = null;
                 for(int i = 0; i < Level.Degree; i++)
                 {
-                    var wave = Instantiate(destroyWave);
+                    var wave = Instantiate(waveTemplate);
                     var waveObj = wave.GetComponent<ObjectiveSet>();
 
                     mainObjective.locks.Add(new ObjectiveLock()

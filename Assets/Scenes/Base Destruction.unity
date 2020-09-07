@@ -142,7 +142,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17512
+  m_Name: pb_Mesh102824
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 195110632}
-  Index: 3
+  Index: 1
 --- !u!1 &195563370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4437767294585148493, guid: 2c9ee0634a38930478a46c3645e654ea,
@@ -3101,7 +3101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429525953}
-  m_LocalRotation: {x: 0.18155435, y: -0.5755919, z: 0.13282752, w: 0.7861863}
+  m_LocalRotation: {x: 0.1815366, y: -0.5756914, z: 0.13285139, w: 0.78611344}
   m_LocalPosition: {x: 47.77603, y: 30, z: -14.746218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3363,6 +3363,11 @@ PrefabInstance:
       propertyPath: _fireRate
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1480023871598137223, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: _ammoCount
+      value: 
+      objectReference: {fileID: 1246820370}
     - target: {fileID: 1574672541347379772, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: onFire.m_PersistentCalls.m_Calls.Array.size
@@ -4107,6 +4112,11 @@ PrefabInstance:
       propertyPath: aiEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5031605250800781146, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 503956174}
     - target: {fileID: 5175955076764287626, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: m_RootOrder
@@ -6291,7 +6301,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759311063}
-  m_LocalRotation: {x: 0.011511765, y: 0.9882205, z: -0.09660115, w: 0.11813575}
+  m_LocalRotation: {x: 0.011140241, y: 0.9886673, z: -0.09664468, w: 0.11433608}
   m_LocalPosition: {x: 0, y: 16.45, z: 63.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7619,8 +7629,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886089391}
-  m_LocalRotation: {x: 0.42464143, y: -0.5047544, z: 0.31545562, w: 0.68219537}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.20839946, y: -0.5745404, z: 0.15539144, w: 0.77609706}
+  m_LocalPosition: {x: 0.0000038146973, y: 0, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1351433304}
@@ -8650,7 +8660,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17350
+  m_Name: pb_Mesh102662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8938,7 +8948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17132
+  m_Name: pb_Mesh102442
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9251,6 +9261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246820369}
+  - component: {fileID: 1246820370}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9285,6 +9296,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246820370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246820368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23c452d39baaa545af20298b5e5a6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAmmo: 999999
+  _maxAmmo: 999999
 --- !u!1 &1250479175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: ff594c9cea692594ca4f5fffc031815b,
@@ -13093,8 +13118,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443081471}
-  m_LocalRotation: {x: 0.53700244, y: -0.41221938, z: 0.33878824, w: 0.65339583}
-  m_LocalPosition: {x: 21.901432, y: 130.31802, z: -8.578396}
+  m_LocalRotation: {x: 0.31455773, y: -0.52647614, z: 0.21815242, w: 0.75913495}
+  m_LocalPosition: {x: 85.72519, y: 92.98863, z: -30.071697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1246820369}
@@ -15804,8 +15829,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658608649}
-  m_LocalRotation: {x: 0.5174233, y: -0.4575186, z: 0.38739505, w: 0.6106348}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.3180125, y: -0.5500562, z: 0.23786472, w: 0.73466086}
+  m_LocalPosition: {x: 0.0000038146973, y: 0, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 870774864}
@@ -18652,7 +18677,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16924
+  m_Name: pb_Mesh102236
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19661,8 +19686,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090623668}
-  m_LocalRotation: {x: 0.5370023, y: -0.41221964, z: 0.33878842, w: 0.6533957}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.3145578, y: -0.5264758, z: 0.21815228, w: 0.7591352}
+  m_LocalPosition: {x: 0.0000038146973, y: 0, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1817218332}
@@ -19785,7 +19810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104701171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.888018, y: 150, z: -7.3731036}
+  m_LocalPosition: {x: 48.350063, y: 53.87987, z: -14.923383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2090623670}

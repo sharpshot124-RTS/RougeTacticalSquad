@@ -63,7 +63,7 @@ MonoBehaviour:
   - name: Enemy 5
     unlocked: 0
   autoCheckCompletion: 1
-  _isComplete: 0
+  _isComplete: 1
   _onComplete:
     m_PersistentCalls:
       m_Calls:
