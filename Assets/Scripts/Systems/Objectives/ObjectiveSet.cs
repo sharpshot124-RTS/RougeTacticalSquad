@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ObjectiveSet : MonoBehaviour, IObjective
 {
-    [SerializeField] private ObjectiveLock[] locks;
+    public List<ObjectiveLock> locks;
     [SerializeField] private bool autoCheckCompletion;
 
     [SerializeField] private bool _isComplete;

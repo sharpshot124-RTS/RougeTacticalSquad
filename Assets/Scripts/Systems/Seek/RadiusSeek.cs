@@ -10,7 +10,7 @@ public class RadiusSeek : MonoBehaviour, ISeek
     [SerializeField] private Color gizmoColor;
     [SerializeField] private float radius = 15;
 
-    [SerializeField] private RaycastUnityEvent onTargetsAquired;
+    [SerializeField] private RaycastUnityEvent onTargetAquired;
 
     private List<RaycastHit> targets = new List<RaycastHit>();
 
@@ -32,16 +32,11 @@ public class RadiusSeek : MonoBehaviour, ISeek
         get { return Transform.position; }
     }
 
-    void UpdateTargets()
-    {
-        Seek(transform.position, Vector3.zero, (r)=> { });
-    }
-    public IEnumerable<YieldInstruction> Seek(Vector3 start, Vector3 target, Action<RaycastHit> onFound)
+    public IEnumerable<YieldInstruction> Seek(Vector3 target, Action<RaycastHit> onFound)
     {
         targets.Clear();
-        transform.position = start;
 
-        var colliders = Physics.OverlapSphere(transform.position, radius, _mask).Where(t => !t.transform.IsChildOf(transform));
+        var colliders = Physics.OverlapSphere(target, radius, _mask).Where(t => !t.transform.IsChildOf(transform));
         if (colliders.Count() > 0)
         {
             RaycastHit hit;
@@ -49,20 +44,20 @@ public class RadiusSeek : MonoBehaviour, ISeek
             foreach (var c in colliders)
             {
                 if (Physics.Raycast(
-                    new Ray(transform.position, c.transform.position - transform.position),
+                    new Ray(target, c.transform.position - target),
                     out hit, radius, _mask))
                 {
                     targets.Add(hit);
-                    onFound.Invoke(hit);
+
+                    if(onFound != null)
+                        onFound.Invoke(hit);
 
                     yield return new WaitForEndOfFrame();
                 }
             }
         }
 
-        targets = new List<RaycastHit>(targets.OrderBy((t) => Vector3.Distance(transform.position, t.point)));
-
-        onTargetsAquired.Invoke(targets.ToArray());
+        targets = new List<RaycastHit>(targets.OrderBy((t) => Vector3.Distance(target, t.point)));
     }
 
     public void OnDrawGizmos()
@@ -94,8 +89,18 @@ public class RadiusSeek : MonoBehaviour, ISeek
         get { return targets.ToArray(); }
     }
 
-    public void Seek(Vector3 start, Vector3 target)
+    public void Seek(Vector3 target)
     {
-        Seek(start, target, null);
+        //Seek(target, null);
+
+        foreach(var test in Seek(target, (r) => onTargetAquired.Invoke(r)))
+        {
+
+        }
+    }
+
+    public void Seek()
+    {
+        Seek(transform.position);
     }
 }

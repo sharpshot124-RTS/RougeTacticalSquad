@@ -122,7 +122,7 @@ public class RepeaterGun : MonoBehaviour, IGun
 
     bool CanFire()
     {
-        if (Ammo.CurrentValue <= 0)
+        if (Ammo != null && Ammo.CurrentValue <= 0)
         {
             return false;
         }

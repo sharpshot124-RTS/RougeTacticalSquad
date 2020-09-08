@@ -16,8 +16,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3739485859686753771}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: UpdateTargets
+        m_TargetAssemblyTypeName: RadiusSeek, Assembly-CSharp
+        m_MethodName: Seek
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   showGizmos: 1
   gizmoColor: {r: 1, g: 0.84147394, b: 0, a: 0.5372549}
   radius: 18
-  onTargetsAquired:
+  onTargetAquired:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3606008895487704430}
@@ -119,7 +119,7 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -111,7 +111,7 @@ public class EmitterProjectile : ScriptableObject, IProjectile
             lastTick = Time.time;
 
             Firing = UnityUtils.StartCoroutine(Targets as MonoBehaviour,
-                Targets.Seek(Transform.position, target, hit => OnHit.Invoke(hit)),
+                Targets.Seek(target, hit => OnHit.Invoke(hit)),
                 //On Step
                 () =>
                 {

@@ -42,12 +42,12 @@ public class ParticleSeek : MonoBehaviour, ISeek
         get { return transform; }
     }
 
-    public void Seek(Vector3 start, Vector3 target)
+    public void Seek(Vector3 target)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<YieldInstruction> Seek(Vector3 start, Vector3 target, Action<RaycastHit> onFound)
+    public IEnumerable<YieldInstruction> Seek(Vector3 target, Action<RaycastHit> onFound)
     {
         Mask = Mask;
         onSeek.Invoke();

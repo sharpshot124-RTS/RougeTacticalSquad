@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISeek
+public interface ISeek : IEntitiy
 {
-    IEnumerable<YieldInstruction> Seek(Vector3 start, Vector3 target, Action<RaycastHit> onFound);
+    IEnumerable<YieldInstruction> Seek(Vector3 target, Action<RaycastHit> onFound);
 
-    void Seek(Vector3 start, Vector3 target);
+    void Seek(Vector3 target);
 
     Vector3 LastPosition { get; }
 
