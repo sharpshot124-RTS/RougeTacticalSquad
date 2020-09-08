@@ -8,6 +8,6 @@ public class SeekTargetAction : GenericAction<MechController>
 {
     public override void Act(MechController controller)
     {
-        controller.Seeker.Seek(controller.transform.position, Vector3.zero);
+        controller.Seeker.Seek(controller.transform.position);
     }
 }

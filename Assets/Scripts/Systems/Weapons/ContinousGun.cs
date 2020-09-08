@@ -92,7 +92,7 @@ public class ContinousGun : MonoBehaviour, IGun
 
     public void Fire(Vector3 target)
     {
-        if (Ammo.CurrentValue <= 0)
+        if (Ammo != null && Ammo.CurrentValue <= 0)
         {
             return;
         }
@@ -111,8 +111,6 @@ public class ContinousGun : MonoBehaviour, IGun
         {
             firing = StartCoroutine(Firing(target));
         }
-
-
     }
 
     public void Fire(RaycastHit hit)

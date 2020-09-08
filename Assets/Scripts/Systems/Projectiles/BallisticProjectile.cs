@@ -92,10 +92,9 @@ public class BallisticProjectile : ScriptableObject, IProjectile
 
     public IProjectile Instantiate()
     {
-        return new BallisticProjectile()
-        {
-            Targets = Instantiate(prefab).GetComponent<ISeek>(),
-        };
+        var projectile = CreateInstance<BallisticProjectile>();
+        projectile.Targets = Instantiate(prefab).GetComponent<ISeek>();
+        return projectile;
     }
 
     public void Fire(Vector3 target)
@@ -106,13 +105,14 @@ public class BallisticProjectile : ScriptableObject, IProjectile
             Reset();
             EndPosition = target;
             Firing = 
-                UnityUtils.StartCoroutine(Targets as MonoBehaviour, Targets.Seek(StartPosition, EndPosition,
-                    //OnHit
+                UnityUtils.StartCoroutine(
+                    Targets as MonoBehaviour, 
+                    Targets.Seek(EndPosition,
                     (hit) => OnHit.Invoke(hit)),
-                //OnStep    
-                () => Transform.position = Targets.LastPosition,
-                //OnComplete
-                () => Firing = null);
+                    //OnStep    
+                    () => Transform.position = Targets.LastPosition,
+                    //OnComplete
+                    () => Firing = null);
 
         }
     }

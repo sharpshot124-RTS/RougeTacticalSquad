@@ -68,14 +68,13 @@ public class BallisticSeek : MonoBehaviour, ISeek
         endPosition = target;
     }
 
-    public IEnumerable<YieldInstruction> Seek(Vector3 start, Vector3 target, Action<RaycastHit> onFound)
+    public IEnumerable<YieldInstruction> Seek(Vector3 target, Action<RaycastHit> onFound)
     {
         RaycastHit hit;
 
-        startPosition = start;
-        endPosition = target;
+        startPosition = Transform.position;
         var startTime = Time.time;
-        Aim(endPosition);
+        Aim(target);
 
         //Set initial Projectile position and state
         _lastPosition = Parabolic.PositionAtTime(
@@ -124,11 +123,11 @@ public class BallisticSeek : MonoBehaviour, ISeek
         seeking = null;
     }
 
-    public void Seek(Vector3 start, Vector3 target)
+    public void Seek(Vector3 start)
     {
         if (seeking != null)
             return;
 
-        seeking = UnityUtils.StartCoroutine(this, Seek(start, target, null));
+        seeking = UnityUtils.StartCoroutine(this, Seek(start, null));
     }
 }
