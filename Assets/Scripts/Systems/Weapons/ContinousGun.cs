@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 public class ContinousGun : MonoBehaviour, IGun
 {
     [SerializeField] private Transform muzzle;
-    [SerializeField] private RaycastUnityEvent onHit, onFire;
+    [SerializeField] private RaycastHitUnityEvent onHit, onFire;
     [SerializeField] private UnityEvent onFireStart, onFireEnd;
     [SerializeField] private LayerMask mask;
     [SerializeField] private float firingLength;

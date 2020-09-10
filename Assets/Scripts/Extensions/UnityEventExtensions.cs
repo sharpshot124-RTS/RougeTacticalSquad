@@ -14,7 +14,4 @@ public class FloatUnityEvent : UnityEvent<float> { }
 public class Vector3UnityEvent : UnityEvent<Vector3> { }
 
 [Serializable]
-public class MultiRaycastUnityEvent : UnityEvent<RaycastHit[]> { }
-
-[Serializable]
 public class RectUnityEvent : UnityEvent<Rect> { }

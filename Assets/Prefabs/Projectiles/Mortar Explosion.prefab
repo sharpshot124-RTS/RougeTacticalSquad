@@ -16,8 +16,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3739485859686753771}
+<<<<<<< HEAD
         m_TargetAssemblyTypeName: RadiusSeek, Assembly-CSharp
         m_MethodName: Seek
+=======
+        m_TargetAssemblyTypeName: 
+        m_MethodName: UpdateTargets
+>>>>>>> N-Legged-enemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -110,7 +115,11 @@ MonoBehaviour:
   showGizmos: 1
   gizmoColor: {r: 1, g: 0.84147394, b: 0, a: 0.5372549}
   radius: 18
+<<<<<<< HEAD
   onTargetAquired:
+=======
+  onTargetsAquired:
+>>>>>>> N-Legged-enemy
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3606008895487704430}
@@ -230,6 +239,7 @@ PrefabInstance:
       propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 199271172029159390, guid: e1b08032bec16ba4eb1ae23cbd572664,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -245,6 +255,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> N-Legged-enemy
     - target: {fileID: 199375762842987212, guid: e1b08032bec16ba4eb1ae23cbd572664,
         type: 3}
       propertyPath: m_Flip.x
@@ -255,6 +267,7 @@ PrefabInstance:
       propertyPath: m_Flip.y
       value: 0.5
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 199459376760036170, guid: e1b08032bec16ba4eb1ae23cbd572664,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -270,6 +283,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> N-Legged-enemy
     - target: {fileID: 199630755385234010, guid: e1b08032bec16ba4eb1ae23cbd572664,
         type: 3}
       propertyPath: m_Flip.x

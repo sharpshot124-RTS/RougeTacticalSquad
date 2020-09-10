@@ -101,7 +101,7 @@ public class UnityExecutor : MonoBehaviour
         Invoke(OnReset);
     }
 
-    [SerializeField] private RaycastUnityEvent onParticleCollision;
+    [SerializeField] private RaycastHitUnityEvent onParticleCollision;
     [SerializeField] private ParticleSystem particle;
     List<ParticleCollisionEvent> particleEvents = new List<ParticleCollisionEvent>();
 

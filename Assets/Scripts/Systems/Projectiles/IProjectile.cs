@@ -10,7 +10,7 @@ public interface IProjectile : IEntity
 
     bool IsFiring { get; }
 
-    RaycastUnityEvent OnHit { get; }
+    RaycastHitUnityEvent OnHit { get; }
 
     ISeek Targets { get; set; }
 

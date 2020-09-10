@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour, IController
 {
     [SerializeField] private InputEventBinding[] actions;
 
-    public YieldType yieldType;
-
     void Update()
     {
         Listen();
@@ -76,7 +74,7 @@ public class InputEventBinding
 {
     public bool enabled = true;
     public string axis;
-    public RaycastUnityEvent action;
+    public RaycastHitUnityEvent action;
     public LayerMask mask;
     public bool continuous = true;
 }

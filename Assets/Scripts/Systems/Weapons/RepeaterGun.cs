@@ -21,7 +21,7 @@ public class RepeaterGun : MonoBehaviour, IGun
     [SerializeField] private Vector3 muzzleSpread;
     [SerializeField] private float maxArcHeight = 20;
     [SerializeField] private LayerMask mask;
-    [SerializeField] private RaycastUnityEvent onFire, onHit;
+    [SerializeField] private RaycastHitUnityEvent onFire, onHit;
 
 
     [SerializeField] private float _range;

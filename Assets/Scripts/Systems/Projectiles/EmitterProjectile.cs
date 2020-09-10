@@ -41,8 +41,8 @@ public class EmitterProjectile : ScriptableObject, IProjectile
         get { return Targets.Transform; }
     }
 
-    private RaycastUnityEvent _onHit = new RaycastUnityEvent();
-    public RaycastUnityEvent OnHit
+    private RaycastHitUnityEvent _onHit = new RaycastHitUnityEvent();
+    public RaycastHitUnityEvent OnHit
     {
         get { return _onHit; }
     }
