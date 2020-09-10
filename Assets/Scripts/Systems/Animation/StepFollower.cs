@@ -5,7 +5,8 @@ using UnityEngine;
 public class StepFollower : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    Vector3 destination, currenVel;
+    [SerializeField] private float stepDuration;
+    Vector3 destination, currenVel, lastPos;
 
     [SerializeField] private float maxDist = .5f;
     [SerializeField] private float maxAngle = 45;
@@ -13,26 +14,45 @@ public class StepFollower : MonoBehaviour
      
     [SerializeField] LayerMask mask;
 
-    // Update is called once per frame
     void Update()
     {
-        var targetDistance = new Vector3(target.position.x, transform.position.y, target.position.z);
-        if(Vector3.Distance(transform.position, target.position) > maxDist || Vector3.Angle(transform.forward, target.forward) >= maxAngle)
+        var dir = destination - target.position;
+        var angleDiff = Vector3.Angle(transform.forward, target.forward);
+        
+        var velDir = (lastPos - target.position).normalized;
+
+        if (dir.magnitude > maxDist || angleDiff >= maxAngle)
         {
-            var dir = (target.position - transform.position).normalized;
+            
+            dir = Vector3.RotateTowards(dir, velDir, maxAngle, 0);          
 
-            destination = target.position + target.forward * maxDist * .9f;
-            destination.y = transform.position.y;   
-
+            Ray ray = new Ray(target.position - dir + Vector3.up * maxDist, Vector3.down);
             RaycastHit hit;
-            if (Physics.Raycast(destination + Vector3.up * maxDist, Vector3.down, out hit, maxDist * 2, mask))
+            if (Physics.Raycast(ray, out hit, maxDist * 2, mask))
             {
+                Debug.DrawRay(ray.origin, ray.direction, Color.red, 1);
+
                 transform.rotation = Quaternion.LookRotation(target.forward, hit.normal);
                 destination = hit.point;
+
+                StartCoroutine(BeginStep());
             }
         }
 
+        lastPos = target.position;
         transform.position = Vector3.SmoothDamp(transform.position, destination, ref currenVel, smoothness);
+    }
+
+    IEnumerator BeginStep()
+    {
+        var start = Time.time;
+        var offset = destination - target.position;
+
+        while(Time.time < start + stepDuration)
+        {
+            destination = target.position + offset;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void OnDrawGizmos()

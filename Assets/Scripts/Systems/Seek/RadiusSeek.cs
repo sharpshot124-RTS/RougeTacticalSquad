@@ -10,7 +10,7 @@ public class RadiusSeek : MonoBehaviour, ISeek
     [SerializeField] private Color gizmoColor;
     [SerializeField] private float radius = 15;
 
-    [SerializeField] private RaycastUnityEvent onTargetsAquired;
+    [SerializeField] private RaycastHitUnityEvent onTargetsAquired;
 
     private List<RaycastHit> targets = new List<RaycastHit>();
 
@@ -58,7 +58,7 @@ public class RadiusSeek : MonoBehaviour, ISeek
 
         targets = new List<RaycastHit>(targets.OrderBy((t) => Vector3.Distance(transform.position, t.point)));
 
-        onTargetsAquired.Invoke(targets.ToArray());
+        onTargetsAquired.InvokeMany(targets.ToArray());
     }
 
     public void OnDrawGizmos()

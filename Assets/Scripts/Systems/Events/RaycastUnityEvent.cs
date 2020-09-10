@@ -5,9 +5,9 @@ using UnityEngine.Events;
 using System;
 
 [Serializable]
-public class RaycastUnityEvent : UnityEvent<RaycastHit>
+public class RaycastHitUnityEvent : UnityEvent<RaycastHit>
 {
-    public void Invoke(RaycastHit[] hits)
+    public void InvokeMany(RaycastHit[] hits)
     {
         foreach (var hit in hits)
         {

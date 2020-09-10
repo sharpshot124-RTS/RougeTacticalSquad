@@ -74,7 +74,7 @@ public class InputEventBinding
 {
     public bool enabled = true;
     public string axis;
-    public RaycastUnityEvent action;
+    public RaycastHitUnityEvent action;
     public LayerMask mask;
     public bool continuous = true;
 }
