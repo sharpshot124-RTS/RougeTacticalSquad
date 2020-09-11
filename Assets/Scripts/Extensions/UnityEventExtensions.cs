@@ -18,3 +18,6 @@ public class RectUnityEvent : UnityEvent<Rect> { }
 
 [Serializable]
 public class StringUnityEvent : UnityEvent<String> { }
+
+[Serializable]
+public class BoolUnityEvent : UnityEvent<bool> { }

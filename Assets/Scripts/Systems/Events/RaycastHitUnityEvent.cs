@@ -17,6 +17,12 @@ public class RaycastHitUnityEvent : UnityEvent<RaycastHit>
 
     public void InvokeAtCursorPoint(LayerMask mask)
     {
+        if (mask.value == LayerMask.GetMask())
+        {
+            Invoke(null);
+            return;
+        }
+
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
