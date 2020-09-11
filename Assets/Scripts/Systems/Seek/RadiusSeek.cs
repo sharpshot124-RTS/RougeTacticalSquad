@@ -10,7 +10,7 @@ public class RadiusSeek : MonoBehaviour, ISeek
     [SerializeField] private Color gizmoColor;
     [SerializeField] private float radius = 15;
 
-    [SerializeField] private RaycastUnityEvent onTargetAquired;
+    [SerializeField] private RaycastHitUnityEvent onTargetAquired;
 
     private List<RaycastHit> targets = new List<RaycastHit>();
 
