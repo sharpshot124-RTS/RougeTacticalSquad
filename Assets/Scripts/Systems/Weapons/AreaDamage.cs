@@ -12,7 +12,7 @@ public class AreaDamage : MonoBehaviour, IDamager
         set { _damage = value; }
     }
 
-    public void ApplyDamage(IHealth target)
+    public void ApplyDamage(ICurrency target)
     {
         Debug.Log(target != null);
 
@@ -24,7 +24,7 @@ public class AreaDamage : MonoBehaviour, IDamager
 
     public void ApplyDamage(RaycastHit hit)
     {
-        var health = hit.transform.GetComponent<IHealth>();
+        var health = hit.transform.GetComponent<ICurrency>();
 
         ApplyDamage(health);
     }

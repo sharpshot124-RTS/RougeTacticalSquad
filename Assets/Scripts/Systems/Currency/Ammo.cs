@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour, ICurrency
 {
@@ -19,9 +20,16 @@ public class Ammo : MonoBehaviour, ICurrency
         set { _maxAmmo = value; }
     }
 
+    public FloatUnityEvent OnValueChange;
+
+    public StringUnityEvent OnValueChangeText;
+
     public void ChangeValue(float delta)
     {
         CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue);
 
+        OnValueChange.Invoke(CurrentValue);
+
+        OnValueChangeText.Invoke(CurrentValue.ToString());
     }
 }

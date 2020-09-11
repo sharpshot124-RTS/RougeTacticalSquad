@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public interface IUnit : IHealth, IMovement, IEntity
+public interface IUnit : ICurrency, IMovement, IEntity
 {
     // Combined Interface (interface inheriting from several interfaces)
 

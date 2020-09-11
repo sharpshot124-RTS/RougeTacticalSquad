@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IHealth
+public class Health : MonoBehaviour, ICurrency
 {
     [SerializeField]
     private float _currentHealth;
@@ -24,26 +24,9 @@ public class Health : MonoBehaviour, IHealth
         set { _MaxHealth = value; }
     }
 
-    [SerializeField]
-    private FloatUnityEvent _onHealthChange;
-    public UnityEvent<float> OnHealthChange
-    {
-        get { return _onHealthChange; }
-    }
-
-    [SerializeField]
-    private UnityEvent _onDeath;
-    public UnityEvent OnDeath
-    {
-        get { return _onDeath; }
-    }
-
-    [SerializeField]
-    private FloatUnityEvent _onHealthChangeNormalized;
-    public UnityEvent<float> OnHealthChangeNormalized
-    {
-        get { return _onHealthChangeNormalized; }
-    }
+    public FloatUnityEvent onHealthChange;
+    public FloatUnityEvent onHealthChangeNormalized;
+    public UnityEvent onDeath;
 
     public void ChangeValue(float delta)
     {
@@ -56,12 +39,12 @@ public class Health : MonoBehaviour, IHealth
 
         if (CurrentValue <= 0)
         {
-            OnDeath.Invoke();
+            onDeath.Invoke();
         }
         else
         {
-            OnHealthChange.Invoke(CurrentValue / MaxValue);
-            OnHealthChange.Invoke(CurrentValue);
+            onHealthChange.Invoke(CurrentValue / MaxValue);
+            onHealthChange.Invoke(CurrentValue);
         }
     }
 }

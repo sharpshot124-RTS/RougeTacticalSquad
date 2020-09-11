@@ -16,7 +16,7 @@ public class ContinousGun : MonoBehaviour, IGun
 
 
     private Coroutine firing;
-    private Dictionary<IHealth, float> lastDamageTimes = new Dictionary<IHealth, float>();
+    private Dictionary<ICurrency, float> lastDamageTimes = new Dictionary<ICurrency, float>();
     private Vector3 fireTarget;
 
 
@@ -74,14 +74,14 @@ public class ContinousGun : MonoBehaviour, IGun
         }
     }
 
-    public void ApplyDamage(IHealth target)
+    public void ApplyDamage(ICurrency target)
     {
         target.ChangeValue(-Damage);
     }
 
     public void ApplyDamage(RaycastHit hit)
     {
-        var health = hit.transform.GetComponent<IHealth>();
+        var health = hit.transform.GetComponent<ICurrency>();
 
         if (health != null)
         {

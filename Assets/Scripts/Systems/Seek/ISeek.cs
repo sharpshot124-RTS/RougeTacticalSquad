@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISeek : IEntitiy
+public interface ISeek : IEntity
 {
     IEnumerable<YieldInstruction> Seek(Vector3 target, Action<RaycastHit> onFound);
 

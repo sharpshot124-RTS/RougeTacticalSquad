@@ -10,7 +10,7 @@ public class UnitHealthBar : MonoBehaviour
 
     public void Onhit()
     {
-        IHealth Unit = (IHealth)health;
+        ICurrency Unit = (ICurrency)health;
         healthBar.value = Unit.CurrentValue / Unit.MaxValue;
     }
 

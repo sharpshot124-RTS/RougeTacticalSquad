@@ -15,3 +15,6 @@ public class Vector3UnityEvent : UnityEvent<Vector3> { }
 
 [Serializable]
 public class RectUnityEvent : UnityEvent<Rect> { }
+
+[Serializable]
+public class StringUnityEvent : UnityEvent<String> { }

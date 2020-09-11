@@ -92,7 +92,7 @@ public class RepeaterGun : MonoBehaviour, IGun
             onFire.Invoke(hit);
 
             lastFire = Time.time;
-            Ammo.CurrentValue--;
+            Ammo.ChangeValue(-1);
         }
     }
 
@@ -155,7 +155,7 @@ public class RepeaterGun : MonoBehaviour, IGun
         }
     }
 
-    public void ApplyDamage(IHealth target)
+    public void ApplyDamage(ICurrency target)
     {
         if (target != null)
         {
@@ -165,7 +165,7 @@ public class RepeaterGun : MonoBehaviour, IGun
 
     public void ApplyDamage(RaycastHit hit)
     {
-        var health = hit.transform.GetComponent<IHealth>();
+        var health = hit.transform.GetComponent<ICurrency>();
 
         ApplyDamage(health);
     }

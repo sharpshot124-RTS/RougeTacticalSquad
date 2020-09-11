@@ -6,5 +6,5 @@ public interface IDamager
 {
     float Damage { get; set; }
 
-    void ApplyDamage(IHealth target);
+    void ApplyDamage(ICurrency target);
 }

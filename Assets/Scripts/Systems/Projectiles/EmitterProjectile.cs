@@ -105,7 +105,7 @@ public class EmitterProjectile : ScriptableObject, IProjectile
         return new EmitterProjectile()
         {
             Targets = Instantiate(prefab).GetComponent<ISeek>(),
-            Mask = this.Mask,
+            Mask = this.Mask,  
         };
     }
 
