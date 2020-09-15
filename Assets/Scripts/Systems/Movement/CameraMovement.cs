@@ -21,15 +21,17 @@ public class CameraMovement : MonoBehaviour
 
     public float GetDragAxis(string axis)
     {
-        if (axis == turnAxisY && Input.GetButton(turnAxisY))
+        if (axis == turnAxisX)
         {
-            return Input.GetAxis("Mouse Y");
+            if(Input.GetButton(turnAxisX))
+            {
+                return Input.GetAxis("Mouse X");
+            }
+            else
+            {
+                return 0;
+            }
         }
-        if (axis == turnAxisX && Input.GetButton(turnAxisX))
-        {
-            return Input.GetAxis("Mouse X");
-        }
-
         return Input.GetAxis(axis);
     }
 
