@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   zoom: 0.9000001
-  zoomCoords: {x: -713.82104, y: -72.24794}
+  zoomCoords: {x: -580.96936, y: -115.34994}
   stateToCopy: {fileID: 0}
   states:
   - {fileID: 5268081722475777763}

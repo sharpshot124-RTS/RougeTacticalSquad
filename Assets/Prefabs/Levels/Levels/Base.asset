@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier: 
+  size: 1000
+  maxEnemies: 10
+  noiseZoom: 25
+  OnGenerated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLevelWin:
+    m_PersistentCalls:
+      m_Calls: []
+  _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
+  _objective: {fileID: 11400000, guid: 855ac245a03239344b9fd462c7b1292e, type: 2}
+  _acreSize: 64
+  _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
+  _zones:
+  - {fileID: 11400000, guid: fa081df16af8e9e488f7bae24cce823c, type: 2}
+  - {fileID: 11400000, guid: 47336a7c7559e7549a3d52e8f57faeaf, type: 2}

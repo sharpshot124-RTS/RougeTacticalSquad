@@ -14,4 +14,19 @@ public static class MonoExtensions
     {
         return Object.FindObjectsOfType<MonoBehaviour>().OfType<T>();
     }
+
+    public static Vector2Int RotatedPosition(this Vector3Int start)
+    {
+        switch(start.z % 4)
+        {
+            default:
+                return new Vector2Int(start.x, start.y);
+            case 1:
+                return new Vector2Int(start.y, -start.x);
+            case 2:
+                return new Vector2Int(-start.x, -start.y);
+            case 3:
+                return new Vector2Int(-start.y, start.x);
+        }
+    }
 }

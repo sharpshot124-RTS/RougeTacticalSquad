@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
+  m_Name: Basic 1x2
+  m_EditorClassIdentifier: 
+  _tile: {fileID: 1025251432723914342, guid: 259f28c5f6a955c44b913197ffe88442, type: 3}
+  _transform: {x: 0, y: 0, z: 0}
+  _acres:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}

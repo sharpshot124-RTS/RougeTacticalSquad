@@ -10,7 +10,7 @@ Material:
   m_Name: MediumMechStrikerBlue 3
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _DETAIL_MULX2 _EMISSION _METALLICGLOSSMAP _NORMALMAP
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -73,5 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.5647059, b: 0.12066099, a: 1}
-    - _EmissionColor: {r: 11.984314, g: 0, b: 9.850981, a: 1}
+    - _Color: {r: 0.15686187, g: 0.33594584, b: 0.4433962, a: 1}
+    - _EmissionColor: {r: 2, g: 1.8117647, b: 0.8784314, a: 1}
+  m_BuildTextureStacks: []

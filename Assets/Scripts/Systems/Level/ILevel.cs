@@ -4,29 +4,36 @@ using UnityEngine;
 
 public interface ILevel
 {
-    BiomeType Biome { get; set; }
+    float AcreSize { get; set; }
 
-    EnemyType Enemy { get; set; }
+    IZone Enemies { get; }
 
-    ObjectiveType Objective { get; set; }
+    List<IZone> Zones { get; }
 
-    int Degree { get; set; }
+    void Generate();
 }
 
-public enum BiomeType
+public interface IZone
 {
-    Valley,
-    Hills,
-    River
+    List<ILandPlot> Plots { get; }
+
+    ILandPlot GetPlot();
 }
 
-public enum EnemyType
+public interface ILandPlot
 {
-    Mech
+    Vector3Int Transform { get; set; }
+
+    List<Vector2Int> Acres { get; set; }
+
+    GameObject Tile { get; set; }
+
+    IEnumerable<Vector2Int> GetTransformedAcres();
+
+    ILandPlot Instantiate();
 }
 
-public enum ObjectiveType
+public interface ILandPlot<T> : ILandPlot
 {
-    Survive,
-    Destroy
+    T Feature { get; }
 }

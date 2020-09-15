@@ -7,10 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2852158391438482296, guid: c69eb35fda960bb4a897fb7c47844a53,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 325d33c6d266f0e448f60efb34dde7b1,
+        type: 3}
     - target: {fileID: 2852158391638683532, guid: c69eb35fda960bb4a897fb7c47844a53,
         type: 3}
       propertyPath: m_Name
-      value: Concussion
+      value: Concussion Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2852158391638683533, guid: c69eb35fda960bb4a897fb7c47844a53,
         type: 3}
@@ -117,27 +123,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2852158391638683530, guid: c69eb35fda960bb4a897fb7c47844a53,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.7057281
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852158391638683530, guid: c69eb35fda960bb4a897fb7c47844a53,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.083704144
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852158391638683530, guid: c69eb35fda960bb4a897fb7c47844a53,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.9339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852158391438482296, guid: c69eb35fda960bb4a897fb7c47844a53,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 325d33c6d266f0e448f60efb34dde7b1,
-        type: 3}
     - target: {fileID: 2852158392923678987, guid: c69eb35fda960bb4a897fb7c47844a53,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -196,6 +196,8 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         NavMeshHit hit;
         if (NavMesh.SamplePosition(location, out hit, 100, 1))
             Nav.destination = hit.position;
+        else
+            Debug.LogWarning("Move Failed to sample navmesh");
     }
 
     public void MoveTo(RaycastHit location)

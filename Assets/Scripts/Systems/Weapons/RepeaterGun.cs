@@ -92,7 +92,9 @@ public class RepeaterGun : MonoBehaviour, IGun
             onFire.Invoke(hit);
 
             lastFire = Time.time;
-            Ammo.ChangeValue(-1);
+
+            if(Ammo != null)
+                Ammo.ChangeValue(-1);
         }
     }
 
