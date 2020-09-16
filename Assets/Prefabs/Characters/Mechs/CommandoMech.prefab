@@ -80,7 +80,7 @@ MonoBehaviour:
       m_Calls: []
   mask:
     serializedVersion: 2
-    m_Bits: 5121
+    m_Bits: 13825
   firingLength: 0.25
   endFireTime: 0
   _ammoCount: {fileID: 0}
@@ -1557,6 +1557,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 713055c357ce3f94d9fb1f2a26e4d61e,
         type: 2}
+    - target: {fileID: 4537760009569077116, guid: 0a9124722bd27274daeb261275f48d7a,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 6038434003181763858, guid: 0a9124722bd27274daeb261275f48d7a,
         type: 3}
       propertyPath: m_Name
@@ -1668,6 +1673,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: eefe7f3ef5de0c44795a1f539fa1729b,
         type: 2}
+    - target: {fileID: 1379935950061980020, guid: 6e213a04b70c2a148993181efc6e41f2,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 3489422522386860966, guid: 6e213a04b70c2a148993181efc6e41f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2214,6 +2224,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0d8adb5be0136f84792be531ef735900,
         type: 2}
+    - target: {fileID: 5431534605623471586, guid: 85df36267a1c9e64b9d298302324dda1,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 7506023758269525808, guid: 85df36267a1c9e64b9d298302324dda1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2670,6 +2685,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bf5d007d702bc7e43aa0ea862fb67fbf,
         type: 2}
+    - target: {fileID: 6026940431653977677, guid: 7b05e0ed24fd0954a9bb24fcbc104c10,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 6847437583047121186, guid: 7b05e0ed24fd0954a9bb24fcbc104c10,
         type: 3}
       propertyPath: m_Volume

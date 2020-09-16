@@ -122,6 +122,21 @@ PrefabInstance:
       propertyPath: _ammoCount
       value: 
       objectReference: {fileID: 6377538190155658244}
+    - target: {fileID: 2358877239079194038, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: muzzleSpread.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358877239079194038, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: muzzleSpread.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358877239079194038, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: muzzleSpread.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2359087593629748135, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: m_Layer

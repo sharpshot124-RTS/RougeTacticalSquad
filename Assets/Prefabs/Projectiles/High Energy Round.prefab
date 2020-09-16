@@ -138,7 +138,7 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   lateralSpeed: 1000
-  maxArcHeight: 10
+  maxArcHeight: 0.01
   lifetime: 10
   penetrationCount: 3
   showDebug: 0

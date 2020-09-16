@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 1574672541347379772, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: maxArcHeight
-      value: 1
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1574672541347379772, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
