@@ -204,4 +204,10 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     {
         MoveTo(location.point);
     }
+
+    [ContextMenu("Kill Unit")]
+    public void Kill()
+    {
+        ChangeValue(-MaxValue);
+    }
 }

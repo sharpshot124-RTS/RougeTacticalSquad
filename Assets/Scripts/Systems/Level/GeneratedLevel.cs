@@ -73,6 +73,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.Root = Root;
         result.size = size;
         result._zones = Zones.ConvertAll<Object>((z) => z as Object);
+        result.Degree = Degree;
 
         result.OnGenerated = result.OnLevelWin = new UnityEvent();
 

@@ -76,6 +76,7 @@ public class SurvivalLevel : GeneratedLevel
         result.timeRequirementCurve = timeRequirementCurve;
         result.size = size;
         result._zones = Zones.ConvertAll<Object>((z) => z as Object);
+        result.Degree = Degree;
 
         result.OnGenerated = result.OnLevelWin = new UnityEvent();
 
