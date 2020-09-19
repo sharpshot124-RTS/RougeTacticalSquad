@@ -121,4 +121,9 @@ public class UnityExecutor : MonoBehaviour
             }
         }
     }
+
+    public new void Destroy(Object target)
+    {
+        Object.Destroy(target);
+    }
 }

@@ -70,7 +70,12 @@ PrefabInstance:
     - target: {fileID: 1025251432723914342, guid: 259f28c5f6a955c44b913197ffe88442,
         type: 3}
       propertyPath: m_Name
-      value: Grass Tile
+      value: Grass Tile Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1767760959987328257, guid: 259f28c5f6a955c44b913197ffe88442,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49ebab6da5e6e4b4caf58fbbea0da4db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 259f28c5f6a955c44b913197ffe88442, type: 3}
