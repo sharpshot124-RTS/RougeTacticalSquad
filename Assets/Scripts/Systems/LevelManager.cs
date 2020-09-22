@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class LevelManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public RunData data;
+
     static ILevel lastLevel;
 
     public int mainMenu, generated, transition, persistent;
@@ -47,10 +50,10 @@ public class LevelManager : MonoBehaviour
 
     public void LoadGenerated()
     {
-        ObjLoadGenerated(lastLevel as UnityEngine.Object);
+        ObjLoadGenerated(lastLevel as Object);
     }
 
-    public void ObjLoadGenerated(UnityEngine.Object level)
+    public void ObjLoadGenerated(Object level)
     {
         Instance.StartCoroutine(LoadGenerated(level as ILevel));
     }
@@ -74,4 +77,47 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void SetEnergyAmmo(Object gun)
+    {
+        ((IGun)gun).Ammo = Instance.data.EnergyAmmo;
+    }
+
+    public void SetBallisticAmmo(Object gun)
+    {
+        ((IGun)gun).Ammo = Instance.data.BallisticAmmo;
+    }
+
+    public void SetHealth1(Object unit)
+    {
+        ((IUnit)unit).Health = Instance.data.Health1;
+    }
+
+    public void SetHealth2(Object unit)
+    {
+        ((IUnit)unit).Health = Instance.data.Health2;
+    }
+
+    public void SetHealth3(Object unit)
+    {
+        ((IUnit)unit).Health = Instance.data.Health3;
+    }
+
+    public void SetHealth4(Object unit)
+    {
+        ((IUnit)unit).Health = Instance.data.Health4;
+    }
+}
+
+[Serializable]
+public struct RunData
+{
+    [SerializeField] Object energyAmmo, ballisticAmmo, health1, health2, health3, health4;
+
+    public ICurrency EnergyAmmo => energyAmmo as ICurrency;
+    public ICurrency BallisticAmmo => ballisticAmmo as ICurrency;
+    public ICurrency Health1 => health1 as ICurrency;
+    public ICurrency Health2 => health2 as ICurrency;
+    public ICurrency Health3 => health3 as ICurrency;
+    public ICurrency Health4 => health4 as ICurrency;
 }

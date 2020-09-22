@@ -213,7 +213,7 @@ PrefabInstance:
         type: 3}
       propertyPath: actions.Array.data[1].action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6760213150335862382}
+      objectReference: {fileID: 7647257781459322512}
     - target: {fileID: 1795283475552276050, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: actions.Array.data[1].action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1553,18 +1553,6 @@ MonoBehaviour:
 --- !u!114 &7647257781459322512 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1480023871598137223, guid: b547c53decaf60d4b8cd17ec99e40f40,
-    type: 3}
-  m_PrefabInstance: {fileID: 9127280981912127767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8527b5a2a7225684987c745b501cc1d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6760213150335862382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2556786449948905337, guid: b547c53decaf60d4b8cd17ec99e40f40,
     type: 3}
   m_PrefabInstance: {fileID: 9127280981912127767}
   m_PrefabAsset: {fileID: 0}

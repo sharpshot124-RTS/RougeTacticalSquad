@@ -19,40 +19,8 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         }
     }
 
-    [SerializeField] private float _currentHealth;
-    public float CurrentValue
-    {
-        get { return _currentHealth; }
-
-        set { _currentHealth = value; }
-    }
-
-    [SerializeField] private float _MaxHealth;
-    public float MaxValue
-    {
-        get { return _MaxHealth; }
-
-        set { _MaxHealth = value; }
-    }
-
-    [SerializeField] private FloatUnityEvent _onHealthChange;
-    public UnityEvent<float> OnHealthChange
-    {
-        get { return _onHealthChange; }
-    }
-
-    [SerializeField]
-    private FloatUnityEvent _onHealthChangeNormalized;
-    public UnityEvent<float> OnHealthChangeNormalized
-    {
-        get { return _onHealthChangeNormalized; }
-    }
-
-    [SerializeField] private UnityEvent _onDeath;
-    public UnityEvent OnDeath
-    {
-        get { return _onDeath; }
-    }
+    [SerializeField] private Health _health;
+    public ICurrency Health { get => _health; set => _health = value as Health; }
 
     [SerializeField] private bool _selectable;
     public bool Selectable
@@ -114,25 +82,6 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
         {
             return !Nav.pathPending &&
           (Nav.isStopped || Nav.isPathStale || Vector3.Distance(Nav.transform.position, Nav.pathEndPosition) <= Nav.stoppingDistance);
-        }
-    }
-
-    public void ChangeValue(float delta)
-    {
-        float lastHealth = CurrentValue;
-        CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue);
-
-        //If health did not change, dont call events
-        if (CurrentValue.Equals(lastHealth))
-            return;
-
-        OnHealthChangeNormalized.Invoke(CurrentValue / MaxValue);
-        OnHealthChange.Invoke(CurrentValue);
-
-
-        if (CurrentValue <= 0)
-        {
-            OnDeath.Invoke();
         }
     }
 
@@ -208,6 +157,6 @@ public class BaseUnit : MonoBehaviour, IUnit, ISelectable
     [ContextMenu("Kill Unit")]
     public void Kill()
     {
-        ChangeValue(-MaxValue);
+        Health.ChangeValue(-Health.MaxValue);
     }
 }
