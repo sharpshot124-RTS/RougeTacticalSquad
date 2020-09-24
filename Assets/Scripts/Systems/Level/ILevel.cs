@@ -6,11 +6,15 @@ public interface ILevel
 {
     float AcreSize { get; set; }
 
+    float Degree { get; set; }
+
     IZone Enemies { get; }
 
     List<IZone> Zones { get; }
 
     void Generate();
+
+    ILevel Instantiate();
 }
 
 public interface IZone

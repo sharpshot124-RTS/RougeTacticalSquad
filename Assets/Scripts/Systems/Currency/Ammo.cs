@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour, ICurrency
 {
-    [SerializeField]
-    private float _currentAmmo;
+    [SerializeField] private float _currentAmmo;
     public float CurrentValue
     {
         get { return _currentAmmo; }
         set { _currentAmmo = value; }
     }
-    [SerializeField]
-    private float _maxAmmo;
+
+    [SerializeField] private float _maxAmmo;
     public float MaxValue
     {
         get { return _maxAmmo; }

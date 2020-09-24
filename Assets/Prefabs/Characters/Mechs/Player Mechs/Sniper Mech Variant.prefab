@@ -128,6 +128,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1480023871598137223, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 1574672541347379772, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: onFire.m_PersistentCalls.m_Calls.Array.size
@@ -339,6 +344,11 @@ PrefabInstance:
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2358877239079194038, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
+      objectReference: {fileID: 0}
     - target: {fileID: 2359087593629748135, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}
       propertyPath: m_Layer
@@ -353,6 +363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556786449948905337, guid: b547c53decaf60d4b8cd17ec99e40f40,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 13825
       objectReference: {fileID: 0}
     - target: {fileID: 2786813605944962669, guid: b547c53decaf60d4b8cd17ec99e40f40,
         type: 3}

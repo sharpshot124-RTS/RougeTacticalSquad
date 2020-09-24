@@ -16,4 +16,10 @@ public class PauseManager : MonoBehaviour
         OnPause.Invoke(paused);
     }
 
+
+    public void Pause(bool isPaused)
+    {
+        paused = !isPaused;
+        Pause();
+    }
 }

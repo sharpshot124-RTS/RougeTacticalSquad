@@ -41,7 +41,7 @@ public class DOTStatus : IStatus<DOTStatusData>
         var durationLeft = Data.duration;
         while (durationLeft > 0)
         {
-            unit.ChangeValue(-Data.dmgPerTick);
+            unit.Health.ChangeValue(-Data.dmgPerTick);
             yield return new WaitForSeconds(Data.tickRate);
             durationLeft -= Data.tickRate;
         }

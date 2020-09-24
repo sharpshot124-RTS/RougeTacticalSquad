@@ -8,17 +8,17 @@ using UnityEngine.Events;
 public class GeneratedLevel : ScriptableObject, ILevel
 {
     public float size;
-    public float maxEnemies = 5;
+    public float enemiesPerDegree = 2;
     public float noiseZoom = 25;
 
     public UnityEvent OnGenerated, OnLevelWin;
     protected Transform container;
 
     [SerializeField] private Object _player;
-    public ILandPlot Player => _player as ILandPlot;
+    public ILandPlot Player { get => _player as ILandPlot; set => _player = value as Object; }
 
     [SerializeField] private Object _objective;
-    public ILandPlot Root => _objective as ILandPlot;
+    public ILandPlot Root { get => _objective as ILandPlot; set => _objective = value as Object; }
 
     [SerializeField] private float _acreSize;
     public float AcreSize { get => _acreSize; set => _acreSize = value; }
@@ -26,10 +26,13 @@ public class GeneratedLevel : ScriptableObject, ILevel
     [SerializeField] private Object _enemies;
     public IZone Enemies { get => _enemies as IZone; set => _enemies = value as Object; }
 
-    [SerializeField] List<Object> _zones;
+    [SerializeField] protected List<Object> _zones;
     public List<IZone> Zones => _zones.ConvertAll((z) => z as IZone);
 
-    public void Generate()
+    [SerializeField] private float _degree;
+    public float Degree { get => _degree; set => _degree = value; }
+
+    public virtual void Generate()
     {
         container = new GameObject().transform;
         List<ILandPlot> plots = new List<ILandPlot>();
@@ -51,12 +54,30 @@ public class GeneratedLevel : ScriptableObject, ILevel
         plots = GeneratePlayerTile(plots);
 
         //Set Enemies
-        for (int e = 0; e < maxEnemies; e++)
+        for (int e = 0; e < enemiesPerDegree * Degree; e++)
         {
             plots = GenerateEnemyTiles(plots);
         }
 
         OnGenerated.Invoke();
+    }
+
+    public virtual ILevel Instantiate()
+    {
+        var result = CreateInstance<GeneratedLevel>();
+
+        result.AcreSize = AcreSize;
+        result.Enemies = Enemies;
+        result.enemiesPerDegree = enemiesPerDegree;
+        result.Player = Player;
+        result.Root = Root;
+        result.size = size;
+        result._zones = Zones.ConvertAll<Object>((z) => z as Object);
+        result.Degree = Degree;
+
+        result.OnGenerated = result.OnLevelWin = new UnityEvent();
+
+        return result;
     }
 
     protected List<ILandPlot> GenerateZones(List<ILandPlot> plots)

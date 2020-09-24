@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public interface IUnit : ICurrency, IMovement, IEntity
+public interface IUnit : IMovement, IEntity
 {
-    // Combined Interface (interface inheriting from several interfaces)
+    ICurrency Health { get; set; }
 
     Coroutine StartCoroutine(IEnumerator coroutine);
 }

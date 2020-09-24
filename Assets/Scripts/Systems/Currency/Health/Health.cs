@@ -26,6 +26,7 @@ public class Health : MonoBehaviour, ICurrency
 
     public FloatUnityEvent onHealthChange;
     public FloatUnityEvent onHealthChangeNormalized;
+    public StringUnityEvent onHealthChangeString;
     public UnityEvent onDeath;
 
     public void ChangeValue(float delta)
@@ -45,6 +46,7 @@ public class Health : MonoBehaviour, ICurrency
         {
             onHealthChange.Invoke(CurrentValue / MaxValue);
             onHealthChange.Invoke(CurrentValue);
+            onHealthChangeString.Invoke(CurrentValue.ToString());
         }
     }
 }
