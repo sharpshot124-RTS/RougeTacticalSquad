@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/Basic Level")]
+[CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/New Level")]
 public class GeneratedLevel : ScriptableObject, ILevel
 {
     public float size;

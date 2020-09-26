@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
-  m_Name: Enemy Mech Plot
+  m_Script: {fileID: -2067819806, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+  m_Name: ApplicationVariables
   m_EditorClassIdentifier: 
-  _tile: {fileID: 8346798321758421202, guid: 61c07ee38c4d83c4abadc11c48d61194, type: 3}
-  _transform: {x: 8, y: 8, z: 0}
-  _acres:
-  - {x: 0, y: 0}
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []

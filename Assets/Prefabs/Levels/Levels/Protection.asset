@@ -18,7 +18,7 @@ MonoBehaviour:
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
   _root: {fileID: 11400000, guid: a0a44cae93b5d6c4abf8d38de87de5ef, type: 2}
   _acreSize: 64
-  _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
+  _enemies: {fileID: 11400000, guid: c2d7953a1f3d08045b5e1953ae8863f8, type: 2}
   _zones:
   - {fileID: 11400000, guid: 3b32ff20b6c5d904c8fbd842ce288b55, type: 2}
   - {fileID: 11400000, guid: fa081df16af8e9e488f7bae24cce823c, type: 2}
