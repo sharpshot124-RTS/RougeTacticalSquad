@@ -34,7 +34,7 @@ public interface ILandPlot
 
     IEnumerable<Vector2Int> GetTransformedAcres();
 
-    ILandPlot Instantiate();
+    ILandPlot Instantiate(float degree);
 }
 
 public interface ILandPlot<T> : ILandPlot

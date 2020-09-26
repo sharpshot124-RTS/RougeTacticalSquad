@@ -4,21 +4,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/Objective Level")]
+[CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/Basic Level")]
 public class GeneratedLevel : ScriptableObject, ILevel
 {
     public float size;
     public float enemiesPerDegree = 2;
     public float noiseZoom = 25;
 
-    public UnityEvent OnGenerated, OnLevelWin;
     protected Transform container;
 
     [SerializeField] private Object _player;
-    public ILandPlot Player { get => _player as ILandPlot; set => _player = value as Object; }
+    public ILandPlot<PlayerData> Player { get => _player as ILandPlot<PlayerData>; set => _player = value as Object; }
 
-    [SerializeField] private Object _objective;
-    public ILandPlot Root { get => _objective as ILandPlot; set => _objective = value as Object; }
+    [SerializeField] private Object _root;
+    public ILandPlot Root { get => _root as ILandPlot; set => _root = value as Object; }
 
     [SerializeField] private float _acreSize;
     public float AcreSize { get => _acreSize; set => _acreSize = value; }
@@ -38,7 +37,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
         List<ILandPlot> plots = new List<ILandPlot>();
 
         //Add root tile
-        var obj = Root.Instantiate();
+        var obj = Root.Instantiate(Degree);
         obj.Transform = new Vector3Int(0, 0, Random.Range(0, 3));
         PositionPrefab(obj.Tile, obj.Transform, container);
         plots.Add(obj);
@@ -58,8 +57,6 @@ public class GeneratedLevel : ScriptableObject, ILevel
         {
             plots = GenerateEnemyTiles(plots);
         }
-
-        OnGenerated.Invoke();
     }
 
     public virtual ILevel Instantiate()
@@ -74,8 +71,6 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.size = size;
         result._zones = Zones.ConvertAll<Object>((z) => z as Object);
         result.Degree = Degree;
-
-        result.OnGenerated = result.OnLevelWin = new UnityEvent();
 
         return result;
     }
@@ -103,7 +98,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
                 if (!Collides(plots, nextBuilding))
                 {
                     //Tile Placed
-                    nextBuilding = nextBuilding.Instantiate();
+                    nextBuilding = nextBuilding.Instantiate(Degree);
                     PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);
 
                     plots.Add(nextBuilding);
@@ -129,7 +124,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
                 if (!Collides(ordered, Player))
                 {
                     //Tile Placed
-                    var player = Player.Instantiate();
+                    var player = Player.Instantiate(Degree);
                     PositionPrefab(player.Tile, player.Transform, container);
 
                     list.Insert(0, player);
@@ -162,7 +157,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
                 if (!Collides(ordered, nextBuilding))
                 {
                     //Tile Placed
-                    nextBuilding = nextBuilding.Instantiate();
+                    nextBuilding = nextBuilding.Instantiate(Degree);
                     PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);
 
                     list.Insert(0, nextBuilding);

@@ -24,7 +24,7 @@ public class LandPlot : ScriptableObject, ILandPlot
         }
     }
 
-    public ILandPlot Instantiate()
+    public ILandPlot Instantiate(float degree)
     {
         var result = CreateInstance<LandPlot>();
         result.Tile = Instantiate(Tile);

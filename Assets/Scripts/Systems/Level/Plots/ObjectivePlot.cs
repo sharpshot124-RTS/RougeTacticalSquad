@@ -30,7 +30,7 @@ public class ObjectivePlot : ScriptableObject, ILandPlot<ObjectiveSet>
         }
     }
 
-    public ILandPlot Instantiate()
+    public ILandPlot Instantiate(float degree)
     {
         var result = CreateInstance<ObjectivePlot>();
         result.Tile = Instantiate(Tile);

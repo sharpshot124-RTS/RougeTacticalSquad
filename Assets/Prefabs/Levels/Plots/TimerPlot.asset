@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb82d54811d4544866ee171e179b3d, type: 3}
   m_Name: TimerPlot
   m_EditorClassIdentifier: 
+  minutesPerDegree: 1
   _transform: {x: 0, y: 0, z: 0}
   _acres:
   - {x: 0, y: 0}
