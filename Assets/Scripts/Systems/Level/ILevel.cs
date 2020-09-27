@@ -22,6 +22,8 @@ public interface IZone
     List<ILandPlot> Plots { get; }
 
     ILandPlot GetPlot();
+
+    string Name { get; set; }
 }
 
 public interface ILandPlot

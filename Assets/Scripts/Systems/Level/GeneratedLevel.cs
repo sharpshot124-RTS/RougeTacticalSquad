@@ -11,6 +11,8 @@ public class GeneratedLevel : ScriptableObject, ILevel
     public float enemiesPerDegree = 2;
     public float noiseZoom = 25;
 
+    public Color background, foreground;
+
     protected Transform container;
 
     [SerializeField] private Object _player;
@@ -71,6 +73,8 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.size = size;
         result._zones = Zones.ConvertAll<Object>((z) => z as Object);
         result.Degree = Degree;
+        result.background = background;
+        result.foreground = foreground;
 
         return result;
     }
