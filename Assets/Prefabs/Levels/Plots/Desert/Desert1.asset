@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
-  m_Name: New_LandPlot
+  m_Name: Desert1
   m_EditorClassIdentifier: 
   _tile: {fileID: 0}
   _transform: {x: 0, y: 0, z: 0}
