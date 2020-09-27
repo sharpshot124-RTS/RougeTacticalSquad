@@ -119,7 +119,11 @@ Material:
     - _EmissionColor: {r: 0, g: 1.2551911, b: 2.6792455, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
+<<<<<<< HEAD
 --- !u!114 &7612241983176295518
+=======
+--- !u!114 &5082552371157037456
+>>>>>>> 49b04aa44c3f82d3156ca7d404c5d07fbda66bd9
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
