@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
-  m_Name: Destruction 2
+  m_Name: Protection 2
   m_EditorClassIdentifier: 
-  size: 5000
+  size: 500
   enemiesPerDegree: 2
   noiseZoom: 25
   background: {r: 0.6784314, g: 0.48091567, b: 0.16470587, a: 0.8352941}
   foreground: {r: 0.9433962, g: 0.76995516, b: 0.36044857, a: 0.6862745}
-  description: Destroy the Objective
+  description: Defend the Objective
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
-  _root: {fileID: 11400000, guid: 5b0a87c8c14417c488624f8499911edb, type: 2}
+  _root: {fileID: 11400000, guid: a0a44cae93b5d6c4abf8d38de87de5ef, type: 2}
   _acreSize: 64
-  _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
+  _enemies: {fileID: 11400000, guid: c2d7953a1f3d08045b5e1953ae8863f8, type: 2}
   _zones:
   - {fileID: 11400000, guid: fa081df16af8e9e488f7bae24cce823c, type: 2}
   - {fileID: 11400000, guid: dc20a149edc5c9b4eaec099984438158, type: 2}

@@ -12,6 +12,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
     public float noiseZoom = 25;
 
     public Color background, foreground;
+    public string description;
 
     protected Transform container;
 
@@ -75,6 +76,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.Degree = Degree;
         result.background = background;
         result.foreground = foreground;
+        result.description = description;
 
         return result;
     }

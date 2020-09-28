@@ -15,6 +15,9 @@ MonoBehaviour:
   size: 500
   enemiesPerDegree: 2
   noiseZoom: 25
+  background: {r: 0.745283, g: 0.45580128, b: 0.010546438, a: 0.8352941}
+  foreground: {r: 0.07676221, g: 0.7075472, b: 0.124461375, a: 0.6862745}
+  description: Defend the Objective
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
   _root: {fileID: 11400000, guid: a0a44cae93b5d6c4abf8d38de87de5ef, type: 2}
   _acreSize: 64

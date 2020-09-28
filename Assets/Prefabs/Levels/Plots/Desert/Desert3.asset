@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
   m_Name: Desert3
   m_EditorClassIdentifier: 
-  _tile: {fileID: 4190799652850609659, guid: 276f6b996e094e441b7e26d5d09da840, type: 3}
+  _tile: {fileID: 3861893327265405039, guid: 60a14b45c9a44234f97b23e1a7ea815f, type: 3}
   _transform: {x: 0, y: 0, z: 0}
   _acres: []

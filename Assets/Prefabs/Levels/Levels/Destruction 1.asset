@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
-  m_Name: Destruction 2
+  m_Name: Destruction 1
   m_EditorClassIdentifier: 
   size: 5000
   enemiesPerDegree: 2
   noiseZoom: 25
-  background: {r: 0.6784314, g: 0.48091567, b: 0.16470587, a: 0.8352941}
+  background: {r: 0.16340333, g: 0.6792453, b: 0.18898818, a: 0.8352941}
   foreground: {r: 0.9433962, g: 0.76995516, b: 0.36044857, a: 0.6862745}
   description: Destroy the Objective
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
@@ -23,6 +23,6 @@ MonoBehaviour:
   _acreSize: 64
   _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
   _zones:
-  - {fileID: 11400000, guid: fa081df16af8e9e488f7bae24cce823c, type: 2}
+  - {fileID: 11400000, guid: 3b32ff20b6c5d904c8fbd842ce288b55, type: 2}
   - {fileID: 11400000, guid: dc20a149edc5c9b4eaec099984438158, type: 2}
   _degree: 1
