@@ -158,8 +158,8 @@ MonoBehaviour:
   OnStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 32594dad1cc46fc45b7da24f29d46289, type: 2}
-        m_TargetAssemblyTypeName: SurvivalLevel, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: 6d8b05da7fa7d8c4dbae4ecb66a1a778, type: 2}
+        m_TargetAssemblyTypeName: GeneratedLevel, Assembly-CSharp
         m_MethodName: Generate
         m_Mode: 1
         m_Arguments:
@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262916125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -519.21, y: 300.50446, z: -499.0484}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

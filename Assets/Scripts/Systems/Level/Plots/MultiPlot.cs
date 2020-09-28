@@ -43,13 +43,13 @@ public class MultiPlot : ScriptableObject, ILandPlot
         }
     }
 
-    public ILandPlot Instantiate()
+    public ILandPlot Instantiate(float degree)
     {
         var result = CreateInstance<MultiPlot>();
 
         foreach(var p in plots)
         {
-            var plot = p.Instantiate();
+            var plot = p.Instantiate(degree);
 
             result.plots.Add(plot);
         }

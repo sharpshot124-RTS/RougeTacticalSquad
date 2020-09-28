@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New_TimerLandPlot", menuName = "Custom/Levels/Plots/Timer")]
 public class TimerPlot : ScriptableObject, ILandPlot<Timer>
 {
+    [SerializeField] private float minutesPerDegree = 1;
+
     [SerializeField] private Vector3Int _transform;
     public Vector3Int Transform 
     { 
@@ -30,12 +32,19 @@ public class TimerPlot : ScriptableObject, ILandPlot<Timer>
         }
     }
 
-    public ILandPlot Instantiate()
+    public ILandPlot Instantiate(float degree)
     {
-        var result = CreateInstance<TimerPlot>();
-        result.Tile = Instantiate(Tile);
+        var result = CreateInstance<TimerPlot>();        
         result.Acres = _acres;
         result.Transform = Transform;
+
+        result.Tile = Instantiate(Tile);
+        result.minutesPerDegree = minutesPerDegree;
+
+        foreach (var e in result.Feature.events)
+        {
+            e.atTime = degree * minutesPerDegree * 60;
+        }
 
         return result;
     }

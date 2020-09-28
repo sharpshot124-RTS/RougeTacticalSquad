@@ -21,3 +21,6 @@ public class StringUnityEvent : UnityEvent<String> { }
 
 [Serializable]
 public class BoolUnityEvent : UnityEvent<bool> { }
+
+[Serializable]
+public class ColorUnityEvent : UnityEvent<Color> { }

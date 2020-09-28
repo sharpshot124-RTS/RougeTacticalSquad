@@ -44,7 +44,7 @@ public class Health : MonoBehaviour, ICurrency
         }
         else
         {
-            onHealthChange.Invoke(CurrentValue / MaxValue);
+            onHealthChangeNormalized.Invoke(CurrentValue / MaxValue);
             onHealthChange.Invoke(CurrentValue);
             onHealthChangeString.Invoke(CurrentValue.ToString());
         }

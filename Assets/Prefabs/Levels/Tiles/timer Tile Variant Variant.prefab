@@ -13,7 +13,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  events: []
+  events:
+  - toDo:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
+            type: 3}
+          m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+          m_MethodName: UnloadScene
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
+            type: 3}
+          m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+          m_MethodName: LoadMenu
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    atTime: 999
 --- !u!1001 &8152388416781414381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4868997590205730176, guid: 6032aa3b9eb051d4e820f078a71948a8,
         type: 3}
       propertyPath: m_Name
-      value: timer Tile Variant Variant
+      value: Timer Tile Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4868997590205730183, guid: 6032aa3b9eb051d4e820f078a71948a8,
         type: 3}
