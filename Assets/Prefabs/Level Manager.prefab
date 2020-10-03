@@ -306,6 +306,57 @@ MonoBehaviour:
   OnValueChangeText:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &666407982066525410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4829242677511628890}
+  - component: {fileID: 144761205376386906}
+  m_Layer: 0
+  m_Name: Money
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4829242677511628890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666407982066525410}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3972916062438725629}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144761205376386906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666407982066525410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23c452d39baaa545af20298b5e5a6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAmmo: 100
+  _maxAmmo: 100
+  OnValueChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValueChangeText:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3972916062438725631
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +391,7 @@ Transform:
   - {fileID: 628653090}
   - {fileID: 731663276}
   - {fileID: 222807477}
+  - {fileID: 4829242677511628890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

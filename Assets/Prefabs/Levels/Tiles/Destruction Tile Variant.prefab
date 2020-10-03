@@ -1,57 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &9202296240300970405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5978270861572135815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d0346e2163bd14cbf60c0e41a04e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentHealth: 250
-  _MaxHealth: 250
-  onHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
-  onHealthChangeNormalized:
-    m_PersistentCalls:
-      m_Calls: []
-  onHealthChangeString:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
-          type: 3}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: UnloadScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
-          type: 3}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &8433059058837710159
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +138,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
           type: 3}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadGenerated
+        m_MethodName: LoadTransition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -265,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 3652768463693406829, guid: 4c9e9ce9a32db1942ae1aff42c47b525,
         type: 3}
       propertyPath: m_Name
-      value: Destruction Tile Variant Variant Variant
+      value: Destruction Tile Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1265039702940367464, guid: 4c9e9ce9a32db1942ae1aff42c47b525, type: 3}
@@ -273,12 +221,6 @@ PrefabInstance:
 --- !u!4 &650275824014589003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3652768463693406826, guid: 4c9e9ce9a32db1942ae1aff42c47b525,
-    type: 3}
-  m_PrefabInstance: {fileID: 4302912342013255201}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5978270861572135815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7584086333502211494, guid: 4c9e9ce9a32db1942ae1aff42c47b525,
     type: 3}
   m_PrefabInstance: {fileID: 4302912342013255201}
   m_PrefabAsset: {fileID: 0}

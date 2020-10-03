@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator LoadGenerated(ILevel level)
     {
-        level = level.Instantiate();
+        //level = level.Instantiate();
         level.Degree += degreeGrowth;
         lastLevel = level;
 
@@ -83,9 +83,19 @@ public class LevelManager : MonoBehaviour
         ((IGun)gun).Ammo = Instance.data.EnergyAmmo;
     }
 
+    public void ChangeEnergyAmmo(int count)
+    {
+        Instance.data.EnergyAmmo.ChangeValue(count);
+    }
+
     public void SetBallisticAmmo(Object gun)
     {
         ((IGun)gun).Ammo = Instance.data.BallisticAmmo;
+    }
+
+    public void ChangeBallisticAmmo(int count)
+    {
+        Instance.data.BallisticAmmo.ChangeValue(count);
     }
 
     public void SetHealth1(Object unit)
@@ -93,9 +103,19 @@ public class LevelManager : MonoBehaviour
         ((IUnit)unit).Health = Instance.data.Health1;
     }
 
+    public void ChangeHealth1(float count)
+    {
+        Instance.data.Health1.ChangeValue(count);
+    }
+
     public void SetHealth2(Object unit)
     {
         ((IUnit)unit).Health = Instance.data.Health2;
+    }
+
+    public void ChangeHealth2(float count)
+    {
+        Instance.data.Health2.ChangeValue(count);
     }
 
     public void SetHealth3(Object unit)
@@ -103,9 +123,19 @@ public class LevelManager : MonoBehaviour
         ((IUnit)unit).Health = Instance.data.Health3;
     }
 
+    public void ChangeHealth3(float count)
+    {
+        Instance.data.Health3.ChangeValue(count);
+    }
+
     public void SetHealth4(Object unit)
     {
         ((IUnit)unit).Health = Instance.data.Health4;
+    }
+
+    public void ChangeHealth4(float count)
+    {
+        Instance.data.Health4.ChangeValue(count);
     }
 }
 

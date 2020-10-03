@@ -33,7 +33,7 @@ MonoBehaviour:
         - m_Target: {fileID: 3972916062438725630, guid: 2e15a6e3ff8efc140a0a04f1d7e9892b,
             type: 3}
           m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-          m_MethodName: LoadMenu
+          m_MethodName: LoadTransition
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4868997590205730176, guid: 6032aa3b9eb051d4e820f078a71948a8,
         type: 3}
       propertyPath: m_Name
-      value: Timer Tile Variant Variant
+      value: timer Tile Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4868997590205730183, guid: 6032aa3b9eb051d4e820f078a71948a8,
         type: 3}

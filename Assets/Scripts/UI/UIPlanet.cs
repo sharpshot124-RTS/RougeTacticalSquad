@@ -29,9 +29,9 @@ public class UIPlanet : MonoBehaviour
             bounds.position.z);
 
         loadLevel.onClick.AddListener(() =>
-        {
-            LevelManager.Instance.LoadGenerated(level);
+        {           
             LevelManager.Instance.UnloadScene(LevelManager.Instance.transition);
+            LevelManager.Instance.StartCoroutine(LevelManager.Instance.LoadGenerated(level));
         });
     }
 
