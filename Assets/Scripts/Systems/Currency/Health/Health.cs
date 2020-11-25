@@ -49,4 +49,14 @@ public class Health : MonoBehaviour, ICurrency
             onHealthChangeString.Invoke(CurrentValue.ToString());
         }
     }
+
+    public void CheckValueChange(float delta)
+    {
+        var sum = CurrentValue + delta;
+
+        if(sum > MaxValue || sum < 0)
+        {
+            throw new ArgumentOutOfRangeException("Delta is out of range");
+        }
+    }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
+  m_Name: Desert3
+  m_EditorClassIdentifier: 
+  _tile: {fileID: 7356991816913391016, guid: 490c1eb90ac53f546a2859393007f798, type: 3}
+  _transform: {x: -8, y: -4, z: 3}
+  _acres:
+  - {x: 0, y: 0}

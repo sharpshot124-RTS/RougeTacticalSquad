@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using BitFSM;
 using UnityEngine;
 
-public class MechController : AIStateController, IController
+public class MechController : IController
 {
     [SerializeField] private Object _iUnit;
     public IUnit Unit
@@ -33,10 +32,5 @@ public class MechController : AIStateController, IController
     public IArea ManueverArea
     {
         get { return _manueverArea as IArea; }
-    }
-
-    public void EnableAI(bool state)
-    {
-        aiEnabled = state;
     }
 }

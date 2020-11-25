@@ -12,4 +12,5 @@ public interface ICurrency
 
     void ChangeValue(float delta);
 
+    void CheckValueChange(float delta);
 }

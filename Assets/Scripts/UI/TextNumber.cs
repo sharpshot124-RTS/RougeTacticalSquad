@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class TextNumber : Text
 {
-    [SerializeField] private float scale, offset;
-
     public void SetText(int number)
     {
-        text = (number * scale + offset).ToString();
+        base.text = (number).ToString();
     }
 
     public void SetText(float number)
     {
-        text = (number * scale + offset).ToString();
+        base.text = (number).ToString();
     }
+
 }

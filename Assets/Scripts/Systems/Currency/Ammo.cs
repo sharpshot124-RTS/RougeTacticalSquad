@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,5 +31,15 @@ public class Ammo : MonoBehaviour, ICurrency
         OnValueChange.Invoke(CurrentValue);
 
         OnValueChangeText.Invoke(CurrentValue.ToString());
+    }
+
+    public void CheckValueChange(float delta)
+    {
+        var sum = CurrentValue + delta;
+
+        if (sum > MaxValue || sum < 0)
+        {
+            throw new ArgumentOutOfRangeException("Delta is out of range");
+        }
     }
 }
