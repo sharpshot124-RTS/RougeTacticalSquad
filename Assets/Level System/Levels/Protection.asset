@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
   m_Name: Protection
   m_EditorClassIdentifier: 
-  size: 500
+  size: {x: 64, y: 64}
   enemiesPerDegree: 2
   noiseZoom: 25
   background: {r: 0.745283, g: 0.45580128, b: 0.010546438, a: 0.8352941}
@@ -20,6 +20,7 @@ MonoBehaviour:
   description: Defend the Objective
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
   _root: {fileID: 11400000, guid: a0a44cae93b5d6c4abf8d38de87de5ef, type: 2}
+  _fill: {fileID: 11400000, guid: 2ca68a45b16dc0043ad6414b5ea21d42, type: 2}
   _acreSize: 64
   _enemies: {fileID: 11400000, guid: c2d7953a1f3d08045b5e1953ae8863f8, type: 2}
   _zones:

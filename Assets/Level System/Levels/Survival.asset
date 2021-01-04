@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
   m_Name: Survival
   m_EditorClassIdentifier: 
-  size: 500
+  size: {x: 64, y: 64}
   enemiesPerDegree: 2
   noiseZoom: 25
   background: {r: 0.745283, g: 0.45580128, b: 0.010546438, a: 0.8352941}
@@ -20,6 +20,7 @@ MonoBehaviour:
   description: Survive until extraction
   _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
   _root: {fileID: 11400000, guid: 8696beb04fa095d448f9a4e51db6cc3a, type: 2}
+  _fill: {fileID: 11400000, guid: 2ca68a45b16dc0043ad6414b5ea21d42, type: 2}
   _acreSize: 64
   _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
   _zones:

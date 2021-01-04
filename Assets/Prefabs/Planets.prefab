@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8574409582110929369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8574409582110929368}
+  - component: {fileID: 8574409582110929381}
+  - component: {fileID: 8574409582110929370}
+  - component: {fileID: 8574409582110929371}
+  - component: {fileID: 8574409582110929380}
+  m_Layer: 5
+  m_Name: Planets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8574409582110929368
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574409582110929369}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8574409582110929381
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574409582110929369}
+  m_CullTransparentMesh: 0
+--- !u!114 &8574409582110929370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574409582110929369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21176472, g: 0.64705884, b: 0.60784316, a: 0.019607844}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8574409582110929371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574409582110929369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 350, y: 350}
+  m_Spacing: {x: 30, y: 15}
+  m_Constraint: 2
+  m_ConstraintCount: 2
+--- !u!114 &8574409582110929380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574409582110929369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7fcaf491190134c80a1717f79ba527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sylables:
+  - arc
+  - ad
+  - pro
+  - glie
+  - kep
+  - ler
+  - kap
+  - teyn
+  - luy
+  - ten
+  - trap
+  - tee
+  - gar
+  - den
+  - xi
+  - prox
+  - ia
+  Levels:
+  - {fileID: 11400000, guid: 6766854dd63381048b3aefe365bdd974, type: 2}
+  - {fileID: 11400000, guid: 2c2a734e2eaebe542b0900f30ded5739, type: 2}
+  - {fileID: 11400000, guid: bd0a5a8e8480f61449fc751d3b68fc62, type: 2}
+  - {fileID: 11400000, guid: c4995409747be1e4aa474f286e757491, type: 2}
+  - {fileID: 11400000, guid: 22446f59727a2304b8e8c208335bc968, type: 2}
+  - {fileID: 11400000, guid: 6d8b05da7fa7d8c4dbae4ecb66a1a778, type: 2}
+  - {fileID: 11400000, guid: 36273c2ac722f534082c12833e513055, type: 2}
+  - {fileID: 11400000, guid: 08bf1cb0840dd4048b3352cf5794827e, type: 2}
+  - {fileID: 11400000, guid: fa38a7ad7444de24da3c1a4d9a02b81f, type: 2}
+  - {fileID: 11400000, guid: b0bda11be73ae0d479663deea7696046, type: 2}
+  - {fileID: 11400000, guid: 841bc2167549c2742b76429788198f0b, type: 2}
+  UIPlanet: {fileID: 8491287904367184346, guid: 31db21efad59ea54ca5d2c68a477fd66,
+    type: 3}

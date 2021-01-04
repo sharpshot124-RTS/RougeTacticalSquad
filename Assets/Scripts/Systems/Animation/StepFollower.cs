@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Algorithm for the target position of an IK limb with a "walking" animation. a.k.a. Procedural walking animation
+/// Needs improvement.
+/// 
+/// This works in tandem with the Unity animation rigging system, which are essentially runtime animation constraints.
+/// </summary>
 public class StepFollower : MonoBehaviour
 {
     [SerializeField] private Transform target;

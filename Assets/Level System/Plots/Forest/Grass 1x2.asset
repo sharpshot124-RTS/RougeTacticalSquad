@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96bd22a94049f4490ed48ada235cbf, type: 3}
   m_Name: Grass 1x2
   m_EditorClassIdentifier: 
-  _tile: {fileID: 4029226672259733414, guid: 542affce0b072b54098802bb84154a4d, type: 3}
-  _transform: {x: 0, y: 0, z: 0}
+  _tile: {fileID: 2218977444627234831, guid: bd4764f07b1e16843b386167ea34765b, type: 3}
+  _transform: {x: -15, y: 1, z: 2}
   _acres:
   - {x: 0, y: 0}
+  - {x: 1, y: 0}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3915cf24b461d47bdff0c529d0de8c, type: 3}
+  m_Name: Destruction 3
+  m_EditorClassIdentifier: 
+  size: {x: 64, y: 64}
+  enemiesPerDegree: 2
+  noiseZoom: 25
+  background: {r: 0.16340333, g: 0.6792453, b: 0.18898818, a: 0.8352941}
+  foreground: {r: 0.9433962, g: 0.76995516, b: 0.36044857, a: 0.6862745}
+  description: Destroy the Objective (Noise)
+  _player: {fileID: 11400000, guid: b1b3f0ab927af3e40905aa4f07ee6c21, type: 2}
+  _root: {fileID: 11400000, guid: 5b0a87c8c14417c488624f8499911edb, type: 2}
+  _fill: {fileID: 11400000, guid: 2ca68a45b16dc0043ad6414b5ea21d42, type: 2}
+  _acreSize: 64
+  _enemies: {fileID: 11400000, guid: 76965b8be1c24a44da65d15a97760a48, type: 2}
+  _zones:
+  - {fileID: 11400000, guid: cb08b08dc551f094bbcf2ac7e88d21ef, type: 2}
+  - {fileID: 11400000, guid: dc20a149edc5c9b4eaec099984438158, type: 2}
+  _degree: 1

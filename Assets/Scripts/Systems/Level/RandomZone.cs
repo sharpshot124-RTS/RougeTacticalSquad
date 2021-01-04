@@ -10,8 +10,11 @@ public class RandomZone : ScriptableObject, IZone
 
     public string Name { get => name; set => name = value; }
 
-    public ILandPlot GetPlot()
+    public ILandPlot GetPlot(int x, int y)
     {
-        return _plots[Random.Range(0, _plots.Count)] as ILandPlot;
+        var result = _plots[Random.Range(0, _plots.Count)] as ILandPlot;
+        result.Transform = new Vector3Int(x, y, Random.Range(0, 4));
+
+        return result;
     }
 }

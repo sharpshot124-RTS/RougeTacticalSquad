@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eaa3158d9997d842a35d887efe6e2a3, type: 3}
+  m_Name: RidgedMultifractal
+  m_EditorClassIdentifier: 
+  frequency: 0.25
+  lacunarity: 2
+  octaves: 2
+  seed: 50

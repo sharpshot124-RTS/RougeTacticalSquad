@@ -4,6 +4,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Collection of paths with positions. Used for situations regarding several sets of arbitrary positions. Uses DoTween.
+/// </summary>
 public class FormationArea : MonoBehaviour, IArea
 {
     public TweenPath[] paths;
@@ -18,12 +21,6 @@ public class FormationArea : MonoBehaviour, IArea
                 paths.Average(p => p.Value.y),
                 paths.Average(p => p.Value.z));
         }
-    }
-
-    [SerializeField] private string _id;
-    public string ID
-    {
-        get { return _id; }
     }
 
     public Vector3 Size
@@ -64,11 +61,6 @@ public class FormationArea : MonoBehaviour, IArea
         get { return transform; }
     }
 
-    public GameObject GameObject
-    {
-        get { return gameObject; }
-    }
-
     public Vector3 GetPositionInArea(Vector3 targetPoint)
     {
         return paths.OrderBy(p => Vector3.Distance(p.Value, targetPoint)).First().Value;
@@ -77,16 +69,6 @@ public class FormationArea : MonoBehaviour, IArea
     public Vector3 GetPoint()
     {
         return paths[lastIndex++ % paths.Length].GetPoint();
-    }
-
-    public void Move(Vector3 direction)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void MoveTo(Vector3 location)
-    {
-        paths[lastIndex].offset = location;
     }
 }
 

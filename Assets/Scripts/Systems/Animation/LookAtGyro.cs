@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
 public class LookAtGyro : MonoBehaviour, IGyro
 {
     private Quaternion rotation;
@@ -14,12 +17,6 @@ public class LookAtGyro : MonoBehaviour, IGyro
 
     private Quaternion origOffset, origTarget;
 
-    public void Awake()
-    {
-        origOffset = offset;
-        origTarget = targetRotation;
-    }
-
     public Quaternion TargetRotation
     {
         get { return targetRotation; }
@@ -27,20 +24,29 @@ public class LookAtGyro : MonoBehaviour, IGyro
         set { targetRotation = value; }
     }
 
+    /// <summary>
+    /// Set target position to look towards
+    /// </summary>
+    /// <param name="target">Target position</param>
     public void LookAt(Vector3 target)
     {
         TargetRotation = Quaternion.LookRotation(target - transform.position);
     }
 
+    /// <summary>
+    /// Set target position to look towards
+    /// </summary>
+    /// <param name="hit">Target position</param>
     public void LookAt(RaycastHit hit)
     {
         LookAt(hit.point);
     }
 
-    public void Reset()
+
+    public void Awake()
     {
-        offset = origOffset;
-        targetRotation = origTarget;
+        origOffset = offset;
+        origTarget = targetRotation;
     }
 
     public void LateUpdate()
@@ -55,5 +61,11 @@ public class LookAtGyro : MonoBehaviour, IGyro
         {
             transform.rotation = rotation;
         }
+    }
+
+    public void Reset()
+    {
+        offset = origOffset;
+        targetRotation = origTarget;
     }
 }

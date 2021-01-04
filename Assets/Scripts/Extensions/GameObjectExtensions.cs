@@ -5,16 +5,11 @@ using Object = UnityEngine.Object;
 
 public static class MonoExtensions
 {
-    public static T GetInterface<T>(this Object script)
-    {
-        return script.GetInterfaces<T>().FirstOrDefault();
-    }
-
-    public static IEnumerable<T> GetInterfaces<T>(this Object script)
-    {
-        return Object.FindObjectsOfType<MonoBehaviour>().OfType<T>();
-    }
-
+    /// <summary>
+    /// Transforms a Vector3Int using the Z value as rotation (clockwise)
+    /// </summary>
+    /// <param name="start">Value to be transformed</param>
+    /// <returns>Output Vector2Int point</returns>
     public static Vector2Int RotatedPosition(this Vector3Int start)
     {
         switch(start.z % 4)

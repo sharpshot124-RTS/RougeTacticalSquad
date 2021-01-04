@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/New Level")]
 public class GeneratedLevel : ScriptableObject, ILevel
 {
-    public float size;
+    public Vector2Int size;
     public float enemiesPerDegree = 2;
     public float noiseZoom = 25;
 
@@ -22,6 +22,9 @@ public class GeneratedLevel : ScriptableObject, ILevel
     [SerializeField] private Object _root;
     public ILandPlot Root { get => _root as ILandPlot; set => _root = value as Object; }
 
+    [SerializeField] private Object _fill;
+    public ILandPlot Fill { get => _fill as ILandPlot; set => _fill = value as Object; }
+
     [SerializeField] private float _acreSize;
     public float AcreSize { get => _acreSize; set => _acreSize = value; }
 
@@ -33,34 +36,6 @@ public class GeneratedLevel : ScriptableObject, ILevel
 
     [SerializeField] private float _degree;
     public float Degree { get => _degree; set => _degree = value; }
-
-    public virtual void Generate()
-    {
-        container = new GameObject().transform;
-        List<ILandPlot> plots = new List<ILandPlot>();
-
-        //Add root tile
-        var obj = Root.Instantiate(Degree);
-        obj.Transform = new Vector3Int(0, 0, Random.Range(0, 3));
-        PositionPrefab(obj.Tile, obj.Transform, container);
-        plots.Add(obj);
-
-
-        //Generate Zones
-        plots = GenerateZones(plots);
-
-        //Order by distance
-        plots = plots.OrderBy((p) => { return -Vector2Int.Distance(obj.Transform.RotatedPosition(), p.Transform.RotatedPosition()); }).ToList();
-
-        //Generate Player        
-        plots = GeneratePlayerTile(plots);
-
-        //Set Enemies
-        for (int e = 0; e < enemiesPerDegree * Degree; e++)
-        {
-            plots = GenerateEnemyTiles(plots);
-        }
-    }
 
     public virtual ILevel Instantiate()
     {
@@ -77,154 +52,122 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.background = background;
         result.foreground = foreground;
         result.description = description;
+        result._fill = _fill;
 
         return result;
     }
 
-    protected List<ILandPlot> GenerateZones(List<ILandPlot> plots)
+    List<ILandPlot> plots = new List<ILandPlot>();
+    public void Generate()
+    {
+        container = new GameObject(description).transform;       
+
+        //Create Objective
+        var obj = Root.Instantiate(Degree);
+        obj.Transform = new Vector3Int(size.x / 2, size.y / 2, Random.Range(0, 3));
+        PositionPrefab(obj.Tile, obj.Transform, container);
+
+        //Add Objective
+        plots.Add(obj);
+
+        //Add Enemies
+        for (int e = 0; e < enemiesPerDegree * Degree; e++)
+        {
+            Vector3Int pos = new Vector3Int((int)((size.x * (Random.value / 2) + .5f)), (int)(size.y * ((Random.value / 2) + .5f)), 0);
+
+            var enemy = Enemies.GetPlot(pos.x, pos.y).Instantiate(Degree);
+            PositionPrefab(enemy.Tile, enemy.Transform, container);
+
+            plots.Add(enemy);
+        }
+
+        Vector3Int playerPos = new Vector3Int((int)((size.x * Random.value / 2)), (int)(size.y * Random.value / 2), 0);
+
+        //Create Player Tile
+        var player = Player.Instantiate(Degree);
+        player.Transform = playerPos;
+        PositionPrefab(player.Tile, player.Transform, container);
+
+        //Add Player
+        plots.Add(player);
+
+        //Add Zones
+        GenerateZones(plots);
+
+        //Fill Gaps
+        FillGaps(plots);
+    }
+
+    protected void GenerateZones(List<ILandPlot> plots)
     {
         float seed = Random.value * 500;
-        ILandPlot nextBuilding, root;
+        ILandPlot nextBuilding;
 
-        for (int i = 0; i < size; i++)
+        for(int x = 0; x < size.x; x++)
         {
-            root = plots[Random.Range(0, plots.Count)];
-
-            var value = Zones.Count * Mathf.Clamp01(Mathf.PerlinNoise(
-                seed + root.Transform.x / noiseZoom,
-                seed + root.Transform.y / noiseZoom));
-
-            var zone = Zones[Mathf.RoundToInt(value - .5f)];
-
-            nextBuilding = zone.GetPlot();
-
-            foreach (var cell in GetAdjacent(root))
+            for (int y = 0; y < size.y; y++)
             {
-                nextBuilding.Transform = cell;
-                if (!Collides(plots, nextBuilding))
-                {
-                    //Tile Placed
-                    nextBuilding = nextBuilding.Instantiate(Degree);
-                    PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);
+                //Get noise value for zone selection
+                var value = Zones.Count * Mathf.Clamp01(Mathf.PerlinNoise(
+                    seed + x / noiseZoom,
+                    seed + y / noiseZoom));
 
-                    plots.Add(nextBuilding);
-                    break;
+                //Get selected zone
+                var zone = Zones[Mathf.RoundToInt(value - .5f)];
+
+                //Get plot
+                nextBuilding = zone.GetPlot(x, y);
+
+                //Check for collision
+                if (Collides(plots, nextBuilding))
+                {                    
+                    continue;
                 }
+
+                //Create Tile
+                nextBuilding = nextBuilding.Instantiate(Degree);                
+                PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);                
+
+                //Add Building
+                plots.Add(nextBuilding);
             }
         }
-
-        return plots;
     }
 
-    protected List<ILandPlot> GeneratePlayerTile(IEnumerable<ILandPlot> ordered)
+    public void FillGaps(List<ILandPlot> plots)
     {
-        var list = new List<ILandPlot>(ordered);
-        foreach (var p in ordered)
+        for (int x = 0; x < size.x; x++)
         {
-            var root = p;
-            bool found = false;
-
-            foreach (var cell in GetAdjacent(root))
+            for (int y = 0; y < size.y; y++)
             {
-                Player.Transform = cell;
-                if (!Collides(ordered, Player))
-                {
-                    //Tile Placed
-                    var player = Player.Instantiate(Degree);
-                    PositionPrefab(player.Tile, player.Transform, container);
+                Fill.Transform = new Vector3Int(x, y, 0);
 
-                    list.Insert(0, player);
-                    found = true;
-                    break;
-                }
+                if (Collides(plots, Fill))
+                    continue;
+
+                //Create Tile
+                var plot = Fill.Instantiate(Degree);
+                PositionPrefab(plot.Tile, plot.Transform, container);
+
+                //Add Building
+                plots.Add(plot);
             }
-
-            if (found)
-                break;
         }
-
-        return list;
-    }
-
-    protected List<ILandPlot> GenerateEnemyTiles(IEnumerable<ILandPlot> ordered)
-    {
-        var list = ordered.ToList();
-        ILandPlot nextBuilding, root;
-
-        foreach (var p in ordered.Reverse())
-        {
-            bool found = false;
-            root = p;
-            nextBuilding = Enemies.GetPlot();
-
-            foreach (var cell in GetAdjacent(root))
-            {
-                nextBuilding.Transform = cell;
-                if (!Collides(ordered, nextBuilding))
-                {
-                    //Tile Placed
-                    nextBuilding = nextBuilding.Instantiate(Degree);
-                    PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);
-
-                    list.Insert(0, nextBuilding);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (found)
-                break;
-        }
-        return list;
     }
 
     protected bool Collides(IEnumerable<ILandPlot> plots, ILandPlot target)
     {
-        foreach(var p in plots)
-        {
-            foreach(var a in p.GetTransformedAcres())
-            {
-                foreach(var t in target.GetTransformedAcres())
-                {
-                    if (t == a)
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    protected IEnumerable<Vector3Int> GetAdjacent(ILandPlot root)
-    {
-        foreach(var a in root.GetTransformedAcres())
-        {
-            for(int x = -1; x < 2; x++)
-            {
-                for (int y = -1; y < 2; y++)
-                {
-                    if (Mathf.Abs(x) == Mathf.Abs(y))
-                        continue;
-
-                    var rotStart = Random.Range(0, 3);
-                    for (int z = rotStart; z < rotStart + 4; z++)
-                    {
-                        yield return new Vector3Int(x + a.x, y + a.y, z);
-                    }
-                }
-            }
-        }
-    }
-
-    protected bool IsAdjacent(IEnumerable<ILandPlot> plots, ILandPlot target)
-    {
         foreach (var p in plots)
         {
+            var dist = p.Transform - target.Transform;
+            if (p.Acres.Count + target.Acres.Count < Mathf.Abs(dist.x) + Mathf.Abs(dist.y))
+                continue;
+
             foreach (var a in p.GetTransformedAcres())
             {
                 foreach (var t in target.GetTransformedAcres())
                 {
-                    if (Mathf.Clamp(t.x, a.x - 1, a.x + 1) == t.x ||
-                        Mathf.Clamp(t.y, a.y - 1, a.y + 1) == t.y)
+                    if (t == a)
                         return true;
                 }
             }
