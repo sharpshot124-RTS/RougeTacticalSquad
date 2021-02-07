@@ -1,20 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Systems.Level.Plots;
+using Assets.Scripts.Systems.Temp;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
+using ObjPlot = Assets.Scripts.Systems.Temp.ObjectivePlot;
+using PlyrPlot = Assets.Scripts.Systems.Temp.PlayerPlot;
 
 [CreateAssetMenu(fileName ="New_Level", menuName = "Custom/Levels/New Level")]
 public class GeneratedLevel : ScriptableObject, ILevel
 {
+    public Vector2Int Size
+    {
+        get { return size; }
+        private set { size = value; }
+    }
+
     public Vector2Int size;
     public float enemiesPerDegree = 2;
-    public float noiseZoom = 25;
+    public float NoiseZoom { get; set; } = 25;
 
     public Color background, foreground;
     public string description;
 
-    protected Transform container;
+    public Transform ContainerTransform { get; private set; }
 
     [SerializeField] private Object _player;
     public ILandPlot<PlayerData> Player { get => _player as ILandPlot<PlayerData>; set => _player = value as Object; }
@@ -46,7 +57,7 @@ public class GeneratedLevel : ScriptableObject, ILevel
         result.enemiesPerDegree = enemiesPerDegree;
         result.Player = Player;
         result.Root = Root;
-        result.size = size;
+        result.Size = Size;
         result._zones = Zones.ConvertAll<Object>((z) => z as Object);
         result.Degree = Degree;
         result.background = background;
@@ -57,133 +68,65 @@ public class GeneratedLevel : ScriptableObject, ILevel
         return result;
     }
 
-    List<ILandPlot> plots = new List<ILandPlot>();
+    public List<ILandPlot> Plots { get;  } = new List<ILandPlot>();
+    public List<IPlot> TempPlots = new List<IPlot>();
     public void Generate()
     {
-        container = new GameObject(description).transform;       
+        ContainerTransform = new GameObject(description).transform;
 
-        //Create Objective
-        var obj = Root.Instantiate(Degree);
-        obj.Transform = new Vector3Int(size.x / 2, size.y / 2, Random.Range(0, 3));
-        PositionPrefab(obj.Tile, obj.Transform, container);
+        // Add Objective
+        ObjPlot objectivePlot = new ObjPlot();
+        TempPlots.Add(objectivePlot);
 
-        //Add Objective
-        plots.Add(obj);
+        // Add Enemies
+        EnemyFactory enemyFactory = new EnemyFactory();
+        TempPlots.AddRange(enemyFactory.getEnemies(enemiesPerDegree * Degree));
 
-        //Add Enemies
-        for (int e = 0; e < enemiesPerDegree * Degree; e++)
-        {
-            Vector3Int pos = new Vector3Int((int)((size.x * (Random.value / 2) + .5f)), (int)(size.y * ((Random.value / 2) + .5f)), 0);
-
-            var enemy = Enemies.GetPlot(pos.x, pos.y).Instantiate(Degree);
-            PositionPrefab(enemy.Tile, enemy.Transform, container);
-
-            plots.Add(enemy);
-        }
-
-        Vector3Int playerPos = new Vector3Int((int)((size.x * Random.value / 2)), (int)(size.y * Random.value / 2), 0);
-
-        //Create Player Tile
-        var player = Player.Instantiate(Degree);
-        player.Transform = playerPos;
-        PositionPrefab(player.Tile, player.Transform, container);
-
-        //Add Player
-        plots.Add(player);
+        // Add Player
+        PlyrPlot playerPlot = new PlyrPlot();
+        TempPlots.Add(playerPlot);
 
         //Add Zones
-        GenerateZones(plots);
+        Vector2Int tempVector2Int = new Vector2Int(12, 12);
+        ZoneFactory zoneFactory = new ZoneFactory();
+        TempPlots.AddRange(zoneFactory.getZones(tempVector2Int));
+
+        // Generate and Bind everything to the primary GameObject
+        List<ZonePlot> collisionZonePlots = new List<ZonePlot>();
+
+        foreach (IPlot plot in TempPlots)
+        {
+            bool hasCollision = plot.Generate(this);
+            if (hasCollision && plot.GetType() == typeof(ZonePlot))
+            {
+                collisionZonePlots.Add((ZonePlot)plot);
+            }
+        }
 
         //Fill Gaps
-        FillGaps(plots);
+        FillGaps(collisionZonePlots);
     }
 
-    protected void GenerateZones(List<ILandPlot> plots)
+    // TODO Check to see if we can validate that there are gaps without looping over everything.
+    public void FillGaps(List<ZonePlot> collisionZonePlots)
     {
-        float seed = Random.value * 500;
-        ILandPlot nextBuilding;
-
-        for(int x = 0; x < size.x; x++)
+        foreach (ZonePlot zonePlot in collisionZonePlots)
         {
-            for (int y = 0; y < size.y; y++)
+            int x = zonePlot.getX();
+            int y = zonePlot.getY();
+
+            Fill.Transform = new Vector3Int(x, y, 0);
+
+            if (!PlotHelper.Instance.Collides(Plots, Fill))
             {
-                //Get noise value for zone selection
-                var value = Zones.Count * Mathf.Clamp01(Mathf.PerlinNoise(
-                    seed + x / noiseZoom,
-                    seed + y / noiseZoom));
-
-                //Get selected zone
-                var zone = Zones[Mathf.RoundToInt(value - .5f)];
-
-                //Get plot
-                nextBuilding = zone.GetPlot(x, y);
-
-                //Check for collision
-                if (Collides(plots, nextBuilding))
-                {                    
-                    continue;
-                }
-
-                //Create Tile
-                nextBuilding = nextBuilding.Instantiate(Degree);                
-                PositionPrefab(nextBuilding.Tile, nextBuilding.Transform, container);                
-
-                //Add Building
-                plots.Add(nextBuilding);
-            }
-        }
-    }
-
-    public void FillGaps(List<ILandPlot> plots)
-    {
-        for (int x = 0; x < size.x; x++)
-        {
-            for (int y = 0; y < size.y; y++)
-            {
-                Fill.Transform = new Vector3Int(x, y, 0);
-
-                if (Collides(plots, Fill))
-                    continue;
-
+                Debug.unityLogger.LogWarning("ZoneMissing", "Zone at x: " + x + " and y: " + y + " is missing.");
                 //Create Tile
                 var plot = Fill.Instantiate(Degree);
-                PositionPrefab(plot.Tile, plot.Transform, container);
+                PlotHelper.Instance.PositionPrefab(plot.Tile, plot.Transform, ContainerTransform, AcreSize);
 
                 //Add Building
-                plots.Add(plot);
+                Plots.Add(plot);
             }
         }
-    }
-
-    protected bool Collides(IEnumerable<ILandPlot> plots, ILandPlot target)
-    {
-        foreach (var p in plots)
-        {
-            var dist = p.Transform - target.Transform;
-            if (p.Acres.Count + target.Acres.Count < Mathf.Abs(dist.x) + Mathf.Abs(dist.y))
-                continue;
-
-            foreach (var a in p.GetTransformedAcres())
-            {
-                foreach (var t in target.GetTransformedAcres())
-                {
-                    if (t == a)
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    protected void PositionPrefab(GameObject prefab, Vector3Int pos, Transform container)
-    {
-        prefab.transform.position = new Vector3(
-            AcreSize * pos.x,
-            0,
-            AcreSize * pos.y);
-
-        prefab.transform.rotation = Quaternion.Euler(0, 90 * pos.z, 0);
-
-        prefab.transform.SetParent(container);
     }
 }

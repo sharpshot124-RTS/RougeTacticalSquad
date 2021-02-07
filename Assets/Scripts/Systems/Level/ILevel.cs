@@ -27,6 +27,13 @@ public interface ILevel
     /// </summary>
     List<IZone> Zones { get; }
 
+    ILandPlot Root { get; }
+    Vector2Int Size { get; }
+    Transform ContainerTransform { get; }
+    List<ILandPlot> Plots { get; }
+    ILandPlot<PlayerData> Player { get ; }
+    float NoiseZoom { get; }
+
     /// <summary>
     /// Creates the level within the rendered game world according to current values. This function can take a large amount of time to execute.
     /// </summary>
