@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Bolt;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -46,7 +47,9 @@ public class LevelManager : MonoBehaviour
         yield return loading;
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(generated));
-        level.Generate();
+        level.ResetPlots();
+        level.GenerateInit();
+        StartCoroutine(level.GenerateAfterInit());
     }
 
     public void LoadGenerated()

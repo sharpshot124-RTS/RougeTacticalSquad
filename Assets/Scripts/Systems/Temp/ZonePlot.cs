@@ -44,20 +44,16 @@ namespace Assets.Scripts.Systems.Temp
                 //Add Building
                 level.Plots.Add(plot);
             }
-            else
-            {
-                Debug.unityLogger.LogWarning("ZoneCollision", "Zone at x: " + x + " and y: " + y + " had a collision.");
-            }
 
             return hasCollision;
         }
 
-        public int getX()
+        public int GetX()
         {
             return x;
         }
 
-        public int getY()
+        public int GetY()
         {
             return y;
         }

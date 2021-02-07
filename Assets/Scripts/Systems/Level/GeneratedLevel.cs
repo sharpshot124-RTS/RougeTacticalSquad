@@ -69,42 +69,92 @@ public class GeneratedLevel : ScriptableObject, ILevel
     }
 
     public List<ILandPlot> Plots { get;  } = new List<ILandPlot>();
-    public List<IPlot> TempPlots = new List<IPlot>();
-    public void Generate()
+    public List<IPlot> TempInitPlots = new List<IPlot>();
+    public List<IPlot> TempAfterInitPlots = new List<IPlot>();
+    public Vector2Int InitSize { get; set; } = new Vector2Int(12, 12);
+    ZoneFactory zoneFactory = new ZoneFactory();
+
+    public List<IPlot> GetAllPlots()
+    {
+        return (List<IPlot>)TempInitPlots.Concat(TempAfterInitPlots);
+    }
+
+    public void ResetPlots()
+    {
+        TempInitPlots = new List<IPlot>();
+        TempAfterInitPlots = new List<IPlot>();
+    }
+
+    public void GenerateInit()
     {
         ContainerTransform = new GameObject(description).transform;
 
         // Add Objective
         ObjPlot objectivePlot = new ObjPlot();
-        TempPlots.Add(objectivePlot);
+        TempInitPlots.Add(objectivePlot);
 
         // Add Enemies
         EnemyFactory enemyFactory = new EnemyFactory();
-        TempPlots.AddRange(enemyFactory.getEnemies(enemiesPerDegree * Degree));
+        TempInitPlots.AddRange(enemyFactory.getEnemies(enemiesPerDegree * Degree));
 
-        // Add Player
-        PlyrPlot playerPlot = new PlyrPlot();
-        TempPlots.Add(playerPlot);
+        // Add Player In Init Area
+        PlyrPlot playerPlot = new PlyrPlot(InitSize);
+        TempInitPlots.Add(playerPlot);
 
-        //Add Zones
-        Vector2Int tempVector2Int = new Vector2Int(12, 12);
-        ZoneFactory zoneFactory = new ZoneFactory();
-        TempPlots.AddRange(zoneFactory.getZones(tempVector2Int));
+        //Add Zones In Init Area
+        TempInitPlots.AddRange(zoneFactory.getZones(InitSize));
 
-        // Generate and Bind everything to the primary GameObject
-        List<ZonePlot> collisionZonePlots = new List<ZonePlot>();
+        // Generate and Bind init plots to the primary GameObject
+        List<ZonePlot> initCollisionZonePlots = new List<ZonePlot>();
 
-        foreach (IPlot plot in TempPlots)
+        foreach (IPlot plot in TempInitPlots)
         {
             bool hasCollision = plot.Generate(this);
             if (hasCollision && plot.GetType() == typeof(ZonePlot))
             {
-                collisionZonePlots.Add((ZonePlot)plot);
+                initCollisionZonePlots.Add((ZonePlot) plot);
             }
         }
 
-        //Fill Gaps
-        FillGaps(collisionZonePlots);
+        // Fill Gaps
+        FillGaps(initCollisionZonePlots);
+    }
+
+    public IEnumerator GenerateAfterInit()
+    {
+        // Get Remaining Zones
+        TempAfterInitPlots.AddRange(zoneFactory.getZones(Size, InitSize));
+
+        // Generate and Bind init plots to the primary GameObject
+        List<ZonePlot> afterInitCollisionZonePlots = new List<ZonePlot>();
+
+        // Post Process Remaining Zones (Possibly in chunks?)
+        foreach (var plot in TempAfterInitPlots)
+        {
+            bool hasCollision = plot.Generate(this);
+            if (hasCollision && plot.GetType() == typeof(ZonePlot))
+            {
+                afterInitCollisionZonePlots.Add((ZonePlot) plot);
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        // Fill Gaps
+        yield return FillGapsOverTime(afterInitCollisionZonePlots);
+    }
+
+    private IEnumerator FillGapsOverTime(List<ZonePlot> collisionZonePlots)
+    {
+        foreach (ZonePlot zonePlot in collisionZonePlots)
+        {
+            int x = zonePlot.GetX();
+            int y = zonePlot.GetY();
+
+            FillGap(x, y);
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     // TODO Check to see if we can validate that there are gaps without looping over everything.
@@ -112,21 +162,26 @@ public class GeneratedLevel : ScriptableObject, ILevel
     {
         foreach (ZonePlot zonePlot in collisionZonePlots)
         {
-            int x = zonePlot.getX();
-            int y = zonePlot.getY();
+            int x = zonePlot.GetX();
+            int y = zonePlot.GetY();
 
-            Fill.Transform = new Vector3Int(x, y, 0);
+            FillGap(x, y);
 
-            if (!PlotHelper.Instance.Collides(Plots, Fill))
-            {
-                Debug.unityLogger.LogWarning("ZoneMissing", "Zone at x: " + x + " and y: " + y + " is missing.");
-                //Create Tile
-                var plot = Fill.Instantiate(Degree);
-                PlotHelper.Instance.PositionPrefab(plot.Tile, plot.Transform, ContainerTransform, AcreSize);
+        }
+    }
 
-                //Add Building
-                Plots.Add(plot);
-            }
+    public void FillGap(int x, int y)
+    {
+        Fill.Transform = new Vector3Int(x, y, 0);
+
+        if (!PlotHelper.Instance.Collides(Plots, Fill))
+        {
+            //Create Tile
+            var plot = Fill.Instantiate(Degree);
+            PlotHelper.Instance.PositionPrefab(plot.Tile, plot.Transform, ContainerTransform, AcreSize);
+
+            //Add Building
+            Plots.Add(plot);
         }
     }
 }

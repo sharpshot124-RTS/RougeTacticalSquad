@@ -33,17 +33,22 @@ public interface ILevel
     List<ILandPlot> Plots { get; }
     ILandPlot<PlayerData> Player { get ; }
     float NoiseZoom { get; }
+    void GenerateInit();
+    IEnumerator GenerateAfterInit();
+
 
     /// <summary>
     /// Creates the level within the rendered game world according to current values. This function can take a large amount of time to execute.
     /// </summary>
-    void Generate();
+    // void Generate();
 
     /// <summary>
     /// Copy values to a new ILevel object of same type
     /// </summary>
     /// <returns>ILevel object of same type as this.</returns>
     ILevel Instantiate();
+
+    void ResetPlots();
 }
 
 

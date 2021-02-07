@@ -27,5 +27,25 @@ namespace Assets.Scripts.Systems.Temp
 
             return zonePlots;
         }
+
+        public IEnumerable<ZonePlot> getZones(Vector2Int wholeArea, Vector2Int excludedArea)
+        {
+            float seed = Random.value * 500;
+
+            List<ZonePlot> zonePlots = new List<ZonePlot>();
+
+            for (int x = 0; x < wholeArea.x; x++)
+            {
+                for (int y = 0; y < wholeArea.y; y++)
+                {
+                    if (!(x < excludedArea.x && y < excludedArea.y))
+                    {
+                        zonePlots.Add(new ZonePlot(seed, x, y));
+                    }
+                }
+            }
+
+            return zonePlots;
+        }
     }
 }
