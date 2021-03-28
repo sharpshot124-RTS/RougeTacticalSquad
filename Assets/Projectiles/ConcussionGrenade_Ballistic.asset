@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1680fd8692b00dd41a2160af4642987d, type: 3}
+  m_Name: ConcussionGrenade_Ballistic
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2914406502591977569, guid: d14bbcf0eeac01e408570ebd5fa271f4, type: 3}

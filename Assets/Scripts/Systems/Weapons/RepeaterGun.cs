@@ -31,8 +31,8 @@ public class RepeaterGun : MonoBehaviour, IGun
         get { return _range; }
     }
 
+    [Tooltip("AmmoCount must Implement ICurrency")]
     [SerializeField] private Object _ammoCount;
-
     public ICurrency Ammo
     {
         get { return _ammoCount as ICurrency; }
@@ -46,6 +46,7 @@ public class RepeaterGun : MonoBehaviour, IGun
         set { _damage = value; }
     }
 
+    [Tooltip("Projectile must Implement IProjectile")]
     [SerializeField] private Object _projectile;
     public IProjectile Projectile
     {

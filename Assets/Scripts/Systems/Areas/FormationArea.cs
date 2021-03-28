@@ -46,6 +46,11 @@ public class FormationArea : MonoBehaviour, IArea
         paths[index].Path.Play();
     }
 
+    public void FlipPath(int index)
+    {
+        paths[index].Path.Flip();
+    }
+
     public void PausePath(int index)
     {
         paths[index].Path.Pause();
@@ -108,7 +113,8 @@ public class TweenPath
 
     Tween CreateSequence()
     {
-        Sequence result = DOTween.Sequence().OnStart(() =>
+        Sequence result = 
+            DOTween.Sequence().OnStart(() =>
             onPathStart.Invoke(Value)).OnComplete(() =>
             onPathComplete.Invoke(Value)).OnUpdate(() =>
             onPathUpdate.Invoke(Value));
