@@ -1442,6 +1442,88 @@ MonoBehaviour:
   OnValueChangeText:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &907989904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5431534605623471586, guid: 63f4432b9f487d148b42eae985e957cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1110277292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907989901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8527b5a2a7225684987c745b501cc1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &907989906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907989901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b84f7d50072f164ea2e73beabc84c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAwake:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 907989904}
+        m_TargetAssemblyTypeName: RepeaterGun, Assembly-CSharp
+        m_MethodName: BeginFiring
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnLateUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFixedUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onParticleCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  particle: {fileID: 0}
 --- !u!1 &940023455
 GameObject:
   m_ObjectHideFlags: 3
@@ -4306,7 +4388,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948226461}
-  m_LocalRotation: {x: 0.010555167, y: 0.98925346, z: -0.09802075, w: 0.10797295}
+  m_LocalRotation: {x: 0.010555149, y: 0.98925346, z: -0.09802071, w: 0.10797291}
   m_LocalPosition: {x: 0, y: 16.45, z: 63.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
